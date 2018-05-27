@@ -6,3 +6,5 @@ output: html_notebook
 ---
 
 ## Sobre O Aluno
+
+Pendente

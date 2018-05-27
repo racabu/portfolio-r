@@ -1,0 +1,114 @@
+---
+title: "Vetores"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Vetores
+
+Para criar um vetor, utilizamos a função "c"
+c = combine
+
+```{r}
+vet_int <- c(1, 2, 3, 10)
+vet_int
+vet_bool <- c(TRUE, TRUE, TRUE, FALSE)
+vet_bool
+vet_str <- c("F","I","A","P")
+vet_str
+vet_num <- c( 12.1, 14, 78.5, FALSE)
+vet_num
+vet <- c(18.1, 19, 20.14)
+vet
+```
+
+Criar um vetor com um monte de valores (de 1 a 40)
+
+```{r}
+montao <- 1:40
+montao
+```
+
+adicionar valor ao vetor vet
+
+```{r}
+vet <- c(vet, 78.7)
+vet
+```
+
+Ou um valor negativo
+
+```{r}
+vet <- c(-18, vet)
+vet
+```
+
+É possível combinar em um vetor, os componentes de outros vetores
+
+```{r}
+vet_int <- c(vet_int, -1,vet_int)
+vet_int
+vet_bool <- c(FALSE, vet_bool)
+vet_bool
+vet_str <- c(10, vet_str, vet_int)
+vet_str
+```
+
+Como criar 2 vetores com os dias da semana
+
+```{r}
+semana.int = c(1,2,3,4,5,6,7)
+semana.int
+semana.str = c("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
+semana.str
+```
+
+Nomear os elementos de um vetor
+
+```{r}
+names(semana.int) <- semana.str
+semana.int
+```
+
+```{r}
+names(semana.int)
+names(semana.str)
+```
+
+Existem funções específicas para trabalhar com os vetores:
+
+```{r}
+vetor_a <- c(1, 2, 3)
+vetor_b <- c(4, 5, 6)
+vetor_total = vetor_a + vetor_b
+vetor_total
+```
+
+# Operações Matemáticas c/ vetores
+
+Multiplicação
+
+```{r}
+vet * 2
+```
+
+```{r}
+vet * 10
+```
+
+Multiplicação e Soma
+
+```{r}
+vet * 10 + 10
+```
+
+Multiplicação entre vetores
+
+```{r}
+vet * vet
+```
+
+
+
+

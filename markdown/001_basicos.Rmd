@@ -1,0 +1,166 @@
+---
+title: "Comandos Básicos"
+author: "Rafael Bueno - rm330593"
+date: "21 de maio de 2018"
+output: html_notebook
+---
+
+# Comandos Básicos
+
+## Variáveis - mostrar valor existente
+
+Definir o valor de uma variável chamada valorA
+
+```{r}
+valorA <- 10
+```
+
+Mostrar o valor da variável valorA
+
+```{r}
+ls()
+10
+valorA
+```
+
+## Somar Variáveis
+
+Realizar 2 somas, uma com valores declarados na soma e outra com valores de variáveis existentes
+
+```{r}
+soma1 <- 40 + 49
+soma2 <- valorA + 49
+```
+
+Mostrar  valor das somas
+
+```{r}
+soma1
+soma2
+```
+
+## Operadores aritméticos básicos
+
+são +, -, /, *, e ^ (ou **)
+
+```{r}
+5 + 10
+5 - 10
+5 * 10
+5 / 10
+5 ^ 10
+5 ** 10
+```
+
+Na divisão, existem operadores para obter o resto da divisão (%%) e o quociente (%/%)
+
+```{r}
+10 / 3
+10 %% 3
+10 %/% 3
+```
+
+## Comandos para Ajuda 
+
+```{r}
+?rnorm
+help.search("rnorm")
+args("rnorm")
+```
+
+## Pacotes
+
+```{r}
+install.packages("abc.data")
+library("abc.data")
+require("abc.data")
+detach("package:abc.data", unload=TRUE)
+remove.packages("abc.data")
+```
+
+É possível acessar um componente de um pacote sem carregá-lo na memória.
+<nome_do_pacote>::<componente>
+
+```{r}
+ggplot2::qplot(1)
+```
+
+
+## Tipos de Dados Primitivos
+
+Números booleanos
+
+```{r}
+var_logical <- TRUE
+var_logical
+class(var_logical)
+```
+
+Números inteiros
+
+```{r}
+var_integer <- 45L
+var_integer
+class(var_integer)
+```
+
+Números decimais
+
+```{r}
+var_numeric <- 45.6
+var_numeric
+class(var_numeric)
+```
+
+Textos, strings
+
+```{r}
+var_character <- "Aula Inicial"
+var_character
+class(var_character)
+```
+
+Números Imaginários
+
+```{r}
+var_imagine <- 1.3 + 2.45i
+var_imagine
+class(var_imagine)
+```
+
+## Verificação e conversão dos dados
+
+Verificar a class
+
+```{r}
+class(var_imagine)
+```
+
+Usar as funções "is"
+
+```{r}
+is.integer(var_imagine)
+is.numeric(var_imagine)
+is.character(var_imagine)
+is.complex(var_imagine)
+```
+
+Para converter existem as funções "as"
+
+```{r}
+var_logical_a <- as.integer(var_logical)
+var_logical_a
+class(var_logical_a)
+var_logical_b <- as.numeric(var_logical_a)
+var_logical_b
+class(var_logical_b)
+var_logical_c <- as.character(var_logical_b)
+var_logical_c
+class(var_logical_c)
+```
+
+
+
+
+
+

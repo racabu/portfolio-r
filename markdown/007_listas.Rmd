@@ -1,0 +1,20 @@
+---
+title: "Listas"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Listas
+
+Muito utilizada para guardar dados estruturados
+similar aos vetores, mas cada elemento pode ter um tipo diferente de dado
+
+```{r}
+vetA <- 1:10
+matA <- matrix(1:9, ncol= 3)
+dfA <- mtcars[1:10,]
+minha_lista <- list(vetA, matA, dfA)
+minha_lista
+```
+

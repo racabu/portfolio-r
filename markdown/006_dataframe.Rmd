@@ -1,0 +1,17 @@
+---
+title: "Data Frames"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Data Frames
+
+Estrutuda de dados mais utilizada em análise de dados
+
+```{r}
+head(mtcars)
+class(mtcars)
+```
+
+
