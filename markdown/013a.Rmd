@@ -1,0 +1,8 @@
+---
+title: "Exercicios - Tabela CARS"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+## Exercicios - Tabela CARS

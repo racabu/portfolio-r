@@ -1,0 +1,20 @@
+---
+title: "Comandos Básicos"
+author: "Rafael Bueno - rm330593"
+date: "21 de maio de 2018"
+output: html_notebook
+---
+
+## a) Variáveis - mostrar valor existente
+
+Definir o valor de uma variável chamada valorA
+
+```{r}
+valorA <- 10
+```
+
+Mostrar o valor da variável valorA
+
+```{r}
+valorA
+```
