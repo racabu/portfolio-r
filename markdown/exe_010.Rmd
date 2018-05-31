@@ -1,0 +1,49 @@
+---
+title: "Exercicio - Tabela CARS"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Tabela CARS
+
+## Todo conteúdo -> tabela CARS
+
+Chunk com todo o conteúdo da tabela 'cars'
+
+```{r}
+cars
+```
+
+## 5 primeiras linhas -> tabela CARS
+
+Chunk com 5 primeiras linhas da tabela 'cars'
+
+```{r}
+head(cars)
+```
+
+## 5 Últimas linhas -> tabela CARS
+
+Chunk com 5 últimas linhas da tabela 'cars'
+
+
+```{r}
+tail(cars)
+```
+
+## Resumo -> tabela CARS
+
+Chunk com o resumo da tabela 'cars'
+
+```{r}
+summary(cars)
+```
+
+## Plot Simples -> tabela CARS
+
+Chunk com plot simples da tabela 'cars'
+
+```{r}
+plot(cars)
+```

@@ -1,0 +1,24 @@
+---
+title: "Exercicio - Matrizes - Malvadão"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Matrizes - Malvadão
+
+Obter o valor da matriz X na equação:
+* AX = B
+
+```{r}
+A = as.matrix( attitude[21:25, 1:5] )
+A
+B = as.matrix( attitude[11:15, 1:5] )
+B
+```
+
+
+```{r}
+X <- solve(A) %*% B
+X
+```
