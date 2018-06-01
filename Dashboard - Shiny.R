@@ -7,9 +7,8 @@ ui <- dashboardPage(
   dashboardSidebar(sidebarMenu(
     menuItem("O Aluno"               , tabName = "sobremim"     , icon = icon("user")      ),
     menuItem("R - Códigos Básicos"   , tabName = "basic"        , icon = icon("terminal")  ),
-    menuItem("R - Valores Especiais" , tabName = "specialval"   , icon = icon("terminal")  ),
     menuItem("R - Download"          , tabName = "download"     , icon = icon("download")  ),
-    menuItem("R - Data e Hora"       , tabName = "datahora"     , icon = icon("calendar")  ),
+    menuItem("R - Lubridate"         , tabName = "lubridate"    , icon = icon("calendar")  ),
     menuItem("R - Estrutura de Dados", icon = icon("database"),
              menuSubItem("R - Vetores"    , tabName = "vectors"   , icon = icon("code") ),
              menuSubItem("R - Matrizes"   , tabName = "matrix"    , icon = icon("th")   ),
@@ -33,14 +32,7 @@ ui <- dashboardPage(
              menuSubItem("Variáveis"                  , tabName = "exe-var"        , icon = icon("chevron-right")),
              menuSubItem("Bolsa de Valores"           , tabName = "exe-vet"        , icon = icon("chevron-right")),
              menuSubItem("Elementos - Tipos de Dados" , tabName = "exe-elem_dados" , icon = icon("chevron-right")),
-             menuSubItem("Revisão Aula 1 - A"         , tabName = "exe-rev_a1a"    , icon = icon("chevron-right")),
-             menuSubItem("Revisão Aula 1 - B"         , tabName = "exe-rev_a1b"    , icon = icon("chevron-right")),
-             menuSubItem("Matrizes - Operações"       , tabName = "exe-matsom"     , icon = icon("chevron-right")),
-             menuSubItem("Matrizes - Multiplicação"   , tabName = "exe-matmult"    , icon = icon("chevron-right")),
-             menuSubItem("Matrizes - Tranposição"     , tabName = "exe-mattransp"  , icon = icon("chevron-right")),
-             menuSubItem("Matrizes - Malvadão"        , tabName = "exe-malvadao"   , icon = icon("chevron-right")),
              menuSubItem("Tabela CARS"                , tabName = "exe-cars"       , icon = icon("chevron-right")),
-             menuSubItem("Lubridate"                  , tabName = "exe-lubridate"  , icon = icon("chevron-right")),
              menuSubItem("BR Flights"                 , tabName = "exe-brflights"  , icon = icon("chevron-right")),
              menuSubItem("Consumo de Energia"         , tabName = "exe-consumo"    , icon = icon("chevron-right"))
     )
@@ -55,11 +47,6 @@ ui <- dashboardPage(
     # TAB CONTENT - R - Basic Codes
     tabItem(tabName = "basic",
             includeMarkdown("markdown/001_basicos.Rmd")
-            ),
-    
-    # TAB CONTENT - R - Valores Especiais
-    tabItem(tabName = "specialval",
-            includeMarkdown("markdown/001_valores_esp.Rmd")
             ),
     
     # TAB CONTENT - R - Vetores
@@ -94,12 +81,12 @@ ui <- dashboardPage(
     
     # TAB CONTENT - R - Subsets
     tabItem(tabName = "subsets",
-            includeMarkdown("markdown/008_subsets.Rmd")
+            includeMarkdown("markdown/000.Rmd")
             ),
     
-    # TAB CONTENT - R - Data e Hota
-    tabItem(tabName = "datahora",
-            includeMarkdown("markdown/010_datahora.Rmd")
+    # TAB CONTENT - R - Lubridate
+    tabItem(tabName = "lubridate",
+            includeMarkdown("markdown/000.Rmd")
             ),
     
     # TAB CONTENT - R - Simulation
@@ -152,51 +139,16 @@ ui <- dashboardPage(
             includeMarkdown("markdown/exe_003.Rmd")
             ),
     
-    # TAB CONTENT - Exercicios - Revisão Aula 1 - A
-    tabItem(tabName = "exe-rev_a1a",
-            includeMarkdown("markdown/exe_004.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Revisão Aula 1 - B
-    tabItem(tabName = "exe-rev_a1b",
-            includeMarkdown("markdown/exe_005.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Matrizes - Operações
-    tabItem(tabName = "exe-matsom",
-            includeMarkdown("markdown/exe_006.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Matrizes - Multiplicação
-    tabItem(tabName = "exe-matmult",
-            includeMarkdown("markdown/exe_007.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Matrizes - Tranposição
-    tabItem(tabName = "exe-mattransp",
-            includeMarkdown("markdown/exe_008.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Matrizes - Malvadão
-    tabItem(tabName = "exe-malvadao",
-            includeMarkdown("markdown/exe_009.Rmd")
-            ),
-    
     # TAB CONTENT - Exercicios - Tabela CARS
     tabItem(tabName = "exe-cars",
-            includeMarkdown("markdown/exe_010.Rmd")
-            ),
-    
-    # TAB CONTENT - Exercicios - Lubridate
-    tabItem(tabName = "exe-lubridate",
-            includeMarkdown("markdown/exe_011.Rmd")
+            includeMarkdown("markdown/000.Rmd")
             ),
     
     # TAB CONTENT - Exercicios - BR Flights
     tabItem(tabName = "exe-brflights",
-            includeMarkdown("markdown/exe_012.Rmd")
+            includeMarkdown("markdown/000.Rmd")
             ),
- 
+    
     # TAB CONTENT - Exercicios - Consumo de Energia
     tabItem(tabName = "exe-consumo",
             includeMarkdown("markdown/000.Rmd")
