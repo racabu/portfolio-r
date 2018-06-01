@@ -1,0 +1,43 @@
+---
+title: "Exercicio - Matrizes - Tranposição"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Matrizes - Tranposição
+
+Obter a transposta M1I a M8T de cada uma das matrizes M1 a M8
+
+```{r}
+M1T = t(M1)
+M1T
+M2T = t(M2)
+M2T
+M3T = t(M3)
+M3T
+M4T = t(M4)
+M4T
+M5T = t(M5)
+M5T
+M6T = t(M6)
+M6T
+M7T = t(M7)
+M7T
+M8T = t(M8)
+M8T
+```
+
+Comparar a multiplicação
+* M8 x M8T
+* M8T x M8
+
+```{r}
+M9 = M8 * M8T
+M9
+M10 = M8T * M8
+M10
+M9 == M10
+```
+
+
