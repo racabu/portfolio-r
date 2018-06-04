@@ -8,7 +8,6 @@ ui <- dashboardPage(
     menuItem("O Aluno"               , tabName = "sobremim"     , icon = icon("user")      ),
     menuItem("R - Códigos Básicos"   , tabName = "basic"        , icon = icon("terminal")  ),
     menuItem("R - Valores Especiais" , tabName = "specialval"   , icon = icon("terminal")  ),
-    menuItem("R - Download"          , tabName = "download"     , icon = icon("download")  ),
     menuItem("R - Data e Hora"       , tabName = "datahora"     , icon = icon("calendar")  ),
     menuItem("R - Environment"       , tabName = "environment"  , icon = icon("code")      ),
     menuItem("R - Estrutura de Dados", icon = icon("database"),
@@ -28,11 +27,12 @@ ui <- dashboardPage(
              menuSubItem("R - Dendrogramas"      , tabName = "dendrogramas" , icon = icon("chevron-right")  )
              ),
     menuItem("R - Simulações", icon = icon("code"),
-             menuSubItem("R - Simulation"            , tabName = "simulation"   , icon = icon("chevron-right")      ),
-             menuSubItem("R - Loop"                  , tabName = "loop"         , icon = icon("chevron-right")      ),
-             menuSubItem("R - Funções e sub-Rotinas" , tabName = "funcoes"      , icon = icon("chevron-right")      ),
-             menuSubItem("R - Condicionais"          , tabName = "condicionais" , icon = icon("chevron-right")      ),
-             menuSubItem("R - KMeans"                , tabName = "kmeans"       , icon = icon("chevron-right")      )
+             menuSubItem("R - Simulation"            , tabName = "simulation"   , icon = icon("chevron-right") ),
+             menuSubItem("R - Loop"                  , tabName = "loop"         , icon = icon("chevron-right") ),
+             menuSubItem("R - Funções e sub-Rotinas" , tabName = "funcoes"      , icon = icon("chevron-right") ),
+             menuSubItem("R - Condicionais"          , tabName = "condicionais" , icon = icon("chevron-right") ),
+             menuSubItem("R - Download"              , tabName = "download"     , icon = icon("chevron-right") ),
+             menuSubItem("R - KMeans"                , tabName = "kmeans"       , icon = icon("chevron-right") )
              ),
     menuItem("Exercicios", icon = icon("question"), 
              menuSubItem("Variáveis"                  , tabName = "exe-var"        , icon = icon("chevron-right")),
@@ -141,12 +141,12 @@ ui <- dashboardPage(
     
     # TAB CONTENT - R - Download
     tabItem(tabName = "download",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/017_download.Rmd")
             ),
     
     # TAB CONTENT - R - DPLYR
     tabItem(tabName = "DPLYR",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/018_DPLYR.Rmd")
             ),
     
     # TAB CONTENT - R - Plots

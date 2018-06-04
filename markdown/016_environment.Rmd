@@ -116,3 +116,36 @@ debugonce(eg)
 eg()
 }
 ```
+
+## LOCK de Variáveis / Ambientes
+
+Lock de Variáveis - Atividade
+
+```{r}
+a <- 3
+lockBinding('a',env = globalenv())
+a <- 4
+rm(a, envir = globalenv())
+```
+
+```{r}
+a = 5
+lockBinding('a', env = globalenv())
+bindingIsLocked('a', env = globalenv())
+```
+
+```{r}
+a = 6
+unlockBinding('a', env = globalenv())
+bindingIsLocked('a', env = globalenv())
+a = 7
+```
+
+Lock de Environments - Atividade
+
+Perigo: Não há unlock de environment!!!
+
+lockEnvironment
+environmentIsLocked
+
+
