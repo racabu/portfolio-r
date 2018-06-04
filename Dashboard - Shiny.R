@@ -10,24 +10,29 @@ ui <- dashboardPage(
     menuItem("R - Valores Especiais" , tabName = "specialval"   , icon = icon("terminal")  ),
     menuItem("R - Download"          , tabName = "download"     , icon = icon("download")  ),
     menuItem("R - Data e Hora"       , tabName = "datahora"     , icon = icon("calendar")  ),
+    menuItem("R - Environment"       , tabName = "environment"  , icon = icon("code")      ),
     menuItem("R - Estrutura de Dados", icon = icon("database"),
-             menuSubItem("R - Vetores"    , tabName = "vectors"   , icon = icon("code") ),
-             menuSubItem("R - Matrizes"   , tabName = "matrix"    , icon = icon("th")   ),
-             menuSubItem("R - Arrays"     , tabName = "array"     , icon = icon("code") ),
-             menuSubItem("R - Fatores"    , tabName = "fatores"   , icon = icon("code") ),
-             menuSubItem("R - Dataframes" , tabName = "dataframe" , icon = icon("code") ),
-             menuSubItem("R - Listas"     , tabName = "listas"    , icon = icon("code") ),
-             menuSubItem("R - Subsets"    , tabName = "subsets"   , icon = icon("code") ),
-             menuSubItem("R - DPLYR"      , tabName = "DPLYR"     , icon = icon("plus") )
+             menuSubItem("R - Vetores"    , tabName = "vectors"    , icon = icon("chevron-right") ),
+             menuSubItem("R - Matrizes"   , tabName = "matrix"     , icon = icon("chevron-right") ),
+             menuSubItem("R - Arrays"     , tabName = "array"      , icon = icon("chevron-right") ),
+             menuSubItem("R - Fatores"    , tabName = "fatores"    , icon = icon("chevron-right") ),
+             menuSubItem("R - Dataframes" , tabName = "dataframe"  , icon = icon("chevron-right") ),
+             menuSubItem("R - Listas"     , tabName = "listas"     , icon = icon("chevron-right") ),
+             menuSubItem("R - Subsets"    , tabName = "subsets"    , icon = icon("chevron-right") ),
+             menuSubItem("R - Sequências" , tabName = "sequencias" , icon = icon("chevron-right") ),
+             menuSubItem("R - DPLYR"      , tabName = "DPLYR"      , icon = icon("chevron-right") )
              ),
     menuItem("R - Gráficos", icon = icon("signal"),
-             menuSubItem("R - Plots"             , tabName = "plots"        , icon = icon("signal")    ),
-             menuSubItem("R - Mapas de Calor"    , tabName = "heatmap"      , icon = icon("delicious") ),
-             menuSubItem("R - Dendrogramas"      , tabName = "dendrogramas" , icon = icon("map")       )
+             menuSubItem("R - Plots"             , tabName = "plots"        , icon = icon("chevron-right")  ),
+             menuSubItem("R - Mapas de Calor"    , tabName = "heatmap"      , icon = icon("chevron-right")  ),
+             menuSubItem("R - Dendrogramas"      , tabName = "dendrogramas" , icon = icon("chevron-right")  )
              ),
     menuItem("R - Simulações", icon = icon("code"),
-             menuSubItem("R - Simulation"        , tabName = "simulation"   , icon = icon("code")      ),
-             menuSubItem("R - KMeans"            , tabName = "kmeans"       , icon = icon("signal")    )
+             menuSubItem("R - Simulation"            , tabName = "simulation"   , icon = icon("chevron-right")      ),
+             menuSubItem("R - Loop"                  , tabName = "loop"         , icon = icon("chevron-right")      ),
+             menuSubItem("R - Funções e sub-Rotinas" , tabName = "funcoes"      , icon = icon("chevron-right")      ),
+             menuSubItem("R - Condicionais"          , tabName = "condicionais" , icon = icon("chevron-right")      ),
+             menuSubItem("R - KMeans"                , tabName = "kmeans"       , icon = icon("chevron-right")      )
              ),
     menuItem("Exercicios", icon = icon("question"), 
              menuSubItem("Variáveis"                  , tabName = "exe-var"        , icon = icon("chevron-right")),
@@ -42,6 +47,8 @@ ui <- dashboardPage(
              menuSubItem("Tabela CARS"                , tabName = "exe-cars"       , icon = icon("chevron-right")),
              menuSubItem("Lubridate"                  , tabName = "exe-lubridate"  , icon = icon("chevron-right")),
              menuSubItem("BR Flights"                 , tabName = "exe-brflights"  , icon = icon("chevron-right")),
+             menuSubItem("Sequências"                 , tabName = "exe-sequencias" , icon = icon("chevron-right")),
+             menuSubItem("Loop - Airpassengers"       , tabName = "exe-loop"       , icon = icon("chevron-right")),
              menuSubItem("Consumo de Energia"         , tabName = "exe-consumo"    , icon = icon("chevron-right"))
     )
   )),
@@ -102,9 +109,34 @@ ui <- dashboardPage(
             includeMarkdown("markdown/010_datahora.Rmd")
             ),
     
+    # TAB CONTENT - R - Sequencias
+    tabItem(tabName = "sequencias",
+            includeMarkdown("markdown/011_sequencias.Rmd")
+            ),
+    
     # TAB CONTENT - R - Simulation
     tabItem(tabName = "simulation",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/012_simulation.Rmd")
+            ),
+    
+    # TAB CONTENT - R - Loop
+    tabItem(tabName = "loop",
+            includeMarkdown("markdown/013_loop.Rmd")
+            ),
+    
+    # TAB CONTENT - R - Funções e sub-Rotinas
+    tabItem(tabName = "funcoes",
+            includeMarkdown("markdown/014_funcoes.Rmd")
+            ),
+    
+    # TAB CONTENT - R - Condicionais
+    tabItem(tabName = "condicionais",
+            includeMarkdown("markdown/015_condicionais.Rmd")
+            ),
+    
+    # TAB CONTENT - R - Environment
+    tabItem(tabName = "environment",
+            includeMarkdown("markdown/016_environment.Rmd")
             ),
     
     # TAB CONTENT - R - Download
@@ -195,6 +227,16 @@ ui <- dashboardPage(
     # TAB CONTENT - Exercicios - BR Flights
     tabItem(tabName = "exe-brflights",
             includeMarkdown("markdown/exe_012.Rmd")
+            ),
+    
+    # TAB CONTENT - Exercicios - Sequências
+    tabItem(tabName = "exe-sequencias",
+            includeMarkdown("markdown/exe_013.Rmd")
+            ),
+    
+    # TAB CONTENT - Exercicios - Loop - Airpassengers
+    tabItem(tabName = "exe-sequencias",
+            includeMarkdown("markdown/exe_014.Rmd")
             ),
  
     # TAB CONTENT - Exercicios - Consumo de Energia

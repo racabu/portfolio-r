@@ -1,0 +1,41 @@
+---
+title: "Condicionais"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Condicionais
+
+## IF
+
+```{r}
+if(1 = 1){
+  #Instruções
+  }
+```
+
+## IF / ELSE
+
+```{r}
+if(1 = 1) {
+  #Instruções
+  } else {
+    #Instruções
+    }
+```
+
+## IF / ELSE IF / ELSE
+
+```{r}
+if (1 = 1){
+  #Instruções
+  } else if (1 = 1){
+    #Instruções
+    } else {
+      #Instruções
+      }
+```
+
+
+

@@ -1,0 +1,41 @@
+---
+title: "Sequencias"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+## Sequencias
+
+Sequências são representadas por dois pontos ":"
+
+```{r}
+1:9
+80:32
+4:-2
+3:3
+1:0
+```
+
+Presente no HELP:
+
+```{r}
+seq(0, 1, length.out = 11)
+seq(stats::rnorm(20))
+seq(1, 9, by = 2)
+seq(1, 9, by = pi) # stays below 'end'
+seq(1, 6, by = 3)
+seq(1.575, 5.125, by = 0.05)
+seq(17) # same as 1:17, or even better
+seq_len(17)
+```
+
+Comando que repete o valor N vezes:
+
+```{r}
+rep(0, times = 40)
+rep(c(0, 1, 2), times = 10)
+rep(c(0, 1, 2), each = 10)
+```
+
+

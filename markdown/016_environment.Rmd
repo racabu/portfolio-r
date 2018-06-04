@@ -1,0 +1,118 @@
+---
+title: "Environment"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Environment
+
+Global Envionment
+
+```{r}
+print(.GlobalEnv)
+View(print)
+View(.GlobalEnv)
+```
+
+
+Atribuição de variáveis entre Environments
+
+
+```{r}
+e1 = new.env()
+assign("var1", 1, envir = e1 )
+get("var1", envir = e1)
+exists("var1", envir = e1)
+rm("var1", envir = e1)
+exists("var1", envir = e1)
+```
+
+
+## Exercício
+
+Criar uma função que:
+- Obtém o environment atual
+- Obtém o Global Environment
+- Imprima o environment atual
+- Imprima o Global Environment
+
+```{r}
+eg <- function(){
+  x <- environment()
+  y <- globalenv()
+  print(x)
+  print(y)
+}
+eg()
+```
+
+Executar esta função 5 vezes
+O endereço do Environment foi o mesmo em todas as execuções?
+
+```{r}
+for (i in 1:5) {
+  eg <- function(){
+  x <- environment()
+  y <- globalenv()
+  print(x)
+  print(y)
+  print(z)
+  }
+  eg()
+  }
+```
+
+
+## <<- 
+
+Atribui valor á variável no ambiente superior que contenha a variável definida. Para no Global.
+Tem uma menção no HELP sobre variável ou ambiente locked
+
+
+```{r}
+lockEnvironment(env, bindings = FALSE)
+
+environmentIsLocked(env)
+
+lockBinding(sym, env)
+
+unlockBinding(sym, env)
+
+bindingIsLocked(sym, env)
+
+makeActiveBinding(sym, fun, env)
+
+bindingIsActive(sym, env)
+```
+
+
+## DEBUG
+
+
+```{r}
+f <- function(){
+  for (i in 1:10) {
+    print(i)
+  }
+}
+debugonce(f)
+```
+
+
+## Exercício
+
+
+```{r}
+for (i in 1:5) {
+  eg <- function(){
+  x <- environment()
+  y <- globalenv()
+  print(x)
+  print(y)
+  print(z)
+}
+debugonce(eg)
+eg()
+}
+```

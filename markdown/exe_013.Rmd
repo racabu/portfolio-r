@@ -1,0 +1,41 @@
+---
+title: "Exercicio - Sequências"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Exercício - Sequências
+
+Crie uma variável my_seq com 30 valores entre 5 e 10
+
+```{r}
+my_seq <- seq(5, 10, by = (5/30))
+my_seq
+my_seq2 <- seq(from = 5, to = 10, length.out = 30)
+my_seq2
+```
+
+Qual a diferença das instruções
+
+* pi:10
+* 10:pi
+
+```{r}
+pi:10
+10:pi
+```
+
+Como consultar o tamanho do vetor my_seq
+
+```{r}
+length(my_seq)
+```
+
+Como fazer uma sequencia que acompanhe o tamanho do vetor my_seq?
+
+```{r}
+seq_along(my_seq)
+```
+
+

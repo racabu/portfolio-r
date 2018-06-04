@@ -5,7 +5,7 @@ date: "26 de maio de 2018"
 output: html_notebook
 ---
 
-# Análise BrFlights2
+# Análise BrFlights2 (Falta FINAL - 2 partes)
 
 Carregar o dataset BrFlights2.RData 
 
@@ -89,6 +89,8 @@ Qual a relação média entre distância percorrida e tempo de voô?
 
 ```{r}
 
+BrFlights2$DistanciaEuc
+BrFlights2$TempoViagem.Real
 ```
 
 É possível identificar a companhia mais rápida?

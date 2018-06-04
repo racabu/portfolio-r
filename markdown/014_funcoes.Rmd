@@ -1,0 +1,113 @@
+---
+title: "Funções e sub-Rotinas"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Funções e sub-Rotinas
+
+Criar:
+obj_name <- function(<parâmetros>){
+instruções
+}
+
+Executar:
+obj_name(<parâmetros>)
+
+função recursiva
+
+
+```{r}
+
+
+```
+
+
+## Exercício
+
+* Criar função Fatorial que retorna o fatorial de um número inteiro.
+* O fatorial de um número n é n * n-1 * n-2 ... até n = 1
+* Exemplo 4! (lê-se 4 fatorial) é dado por: 4 * 3 * 2 * 1
+
+Opção 1
+
+```{r}
+fatorial <- function(n){
+r <- n
+  while (n > 1) {
+    r = r + (n * (n - 1))
+    n = n - 1
+  }
+return(r)
+}
+fatorial(4)
+```
+
+Opção 2 - Solução Aula
+
+```{r}
+fatorial <- function(n){
+  if(n==1){
+    return (1)
+  }
+  return(n * fatorial(n - 1))
+}
+fatorial(4)
+
+```
+
+Fazer uma função que recebe um vetor numérico e retorna seus valores invertidos.
+Exemplo:
+
+* Entrada: 44, 67 , 5, 47, 8, 1, 79, 128
+* Saída: 128, 79, 1, 8, 47, 5, 67, 44
+
+
+```{r}
+
+
+```
+
+
+## PARA RACIOCIAR
+
+* O que é a variável i? Uma função ou um número?
+* O que é esperado da "Execução 1"?
+* E da "Execuçãoo 2"?
+
+
+```{r}
+h <- function() {
+  x <- 10
+  function() {
+    x
+  }
+}
+i <- h()
+#Execução 1:
+i()
+x <- 20
+#Execução 2:
+i()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
