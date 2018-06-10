@@ -48,8 +48,7 @@ ui <- dashboardPage(
              menuSubItem("Lubridate"                  , tabName = "exe-lubridate"  , icon = icon("chevron-right")),
              menuSubItem("BR Flights"                 , tabName = "exe-brflights"  , icon = icon("chevron-right")),
              menuSubItem("Sequências"                 , tabName = "exe-sequencias" , icon = icon("chevron-right")),
-             menuSubItem("Loop - Airpassengers"       , tabName = "exe-loop"       , icon = icon("chevron-right")),
-             menuSubItem("Consumo de Energia"         , tabName = "exe-consumo"    , icon = icon("chevron-right"))
+             menuSubItem("Loop - Airpassengers"       , tabName = "exe-loop"       , icon = icon("chevron-right"))
     )
   )),
   ## Body content
@@ -151,22 +150,22 @@ ui <- dashboardPage(
     
     # TAB CONTENT - R - Plots
     tabItem(tabName = "plots",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/019_plots.Rmd")
             ),
     
     # TAB CONTENT - R - KMeans
     tabItem(tabName = "kmeans",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/020_kmeans.Rmd")
             ),
     
     # TAB CONTENT - R - Mapas de Calor
     tabItem(tabName = "heatmap",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/021_mapacalor.Rmd")
             ),
     
     # TAB CONTENT - R - Dendrogramas
     tabItem(tabName = "dendrogramas",
-            includeMarkdown("markdown/000.Rmd")
+            includeMarkdown("markdown/022_dendrograma.Rmd")
             ),
     
     # TAB CONTENT - Exercicios - Variáveis
@@ -237,11 +236,6 @@ ui <- dashboardPage(
     # TAB CONTENT - Exercicios - Loop - Airpassengers
     tabItem(tabName = "exe-sequencias",
             includeMarkdown("markdown/exe_014.Rmd")
-            ),
- 
-    # TAB CONTENT - Exercicios - Consumo de Energia
-    tabItem(tabName = "exe-consumo",
-            includeMarkdown("markdown/000.Rmd")
             )
   ))
 )

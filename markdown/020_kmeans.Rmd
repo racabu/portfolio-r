@@ -1,0 +1,188 @@
+---
+title: "K-Means"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# K-Médias / K-Means
+
+```{r}
+library(dplyr)
+library(readr)
+library(plotly)
+library(zoo)
+library(scales)
+library(dendextend)
+library(ape)
+```
+
+
+Gerando dados aleatórios
+
+
+```{r}
+set.seed(1909)
+x <- rnorm(15, mean = rep(1:3, each = 5), sd = 0.2)
+y <- rnorm(15, mean = rep(c(1, 2), each = 5), sd = 0.2)
+plot(x, y, col = "blue", pch = 19, cex = 1)
+text(x + 0.05, y + 0.05, labels = as.character(1:15))
+```
+
+
+```{r}
+set.seed(1909)
+mydata = data.frame(x, y)
+modelo = kmeans(x = mydata, centers = 3)
+plot(x, y, col = "blue", pch = 19, cex = 1)
+points(modelo$centers, col = "red", pch = 3, cex = 3, lwd = 2)
+```
+
+
+## Fifa 18 - Analisado habilidades
+
+Filtrar em um dataset menor usando o dplyr que contemple
+- Atributos name, dribbling, acceleration
+- Apenas os 602 jogadores da liga "Spanish Primera División"
+
+
+```{r}
+fifa_game_2 <- read_csv("../data/fifa game-2.csv",
+                        locale = locale(encoding = "ISO-8859-1"))
+head(fifa_game_2)
+summary(fifa_game_2)
+```
+
+```{r}
+spec(fifa_game_2)
+```
+
+Rode o k-means com 4 centróides
+
+```{r}
+fifa_game_2 %>%
+  filter(league == "Spanish Primera División") %>%
+  select(name,dribbling,acceleration) -> spain.2d
+plot(spain.2d$dribbling, spain.2d$acceleration
+     , xlab = "dribbling", ylab = "acceleration"
+     )
+```
+
+
+
+```{r}
+set.seed(1)
+centros <- 4
+modelo2 <- kmeans(x = spain.2d[,-1], centers = centros)
+plot(spain.2d$dribbling, spain.2d$acceleration
+     , xlab = "dribbling", ylab = "acceleration"
+     , col = modelo2$cluster
+     )
+points(modelo2$centers, col = 1:centros, bg = centros:1,pch = 24, cex = 2, lwd = 1)
+```
+
+
+```{r}
+fifa_game_2 %>%
+  filter(league == "Spanish Primera División") %>%
+  select(name,dribbling,acceleration,long_passing) -> spain.3d
+plot(spain.3d[-1])
+```
+
+
+
+
+```{r}
+set.seed(2)
+modelo.fifa <- kmeans(x = spain.3d[,-1], centers = 4)
+plot(spain.3d[,-1], col = modelo.fifa$cluster, pch=21, cex=1)
+points(modelo.fifa$centers, col = 4:1, bg = 1:4,pch = 24, cex = 2, lwd = 1)
+```
+
+
+## PLOT LY
+
+
+```{r}
+plot_ly(data = spain.2d,
+x = ~dribbling, y = ~acceleration,
+text = ~name,
+type = 'scatter', mode ='markers')
+```
+
+
+
+```{r}
+plot_ly(data = spain.2d,
+x = ~dribbling, y = ~acceleration,
+text = ~name,
+type = 'scatter', mode ='markers'
+,color = modelo2$cluster)
+```
+
+
+
+```{r}
+plot_ly(data = spain.3d,
+x = ~dribbling, y = ~acceleration, z = ~long_passing,
+text = ~name,
+type = 'scatter3d', mode ='markers'
+,color = modelo.fifa$cluster
+,width = 800
+, size = rep(1, dim(spain.3d) [1]), sizes = c(3.0))
+```
+
+
+## Avaliação de um modelo K-Means
+
+Experimentos
+
+```{r}
+modelo = kmeans(spain.2d[,c('dribbling','acceleration')], centers = 4)
+rbind( cbind('betweenss:', modelo$betweenss),
+cbind('totss:', modelo$totss),
+cbind('quality:', modelo$betweenss / modelo$totss ))
+plot(spain.2d[,c('dribbling','acceleration')],
+col = modelo$cluster,
+pch = 20, cex = 2)
+points(modelo$centers, col = rev(seq_along(modelo$centers)),
+bg=seq_along(modelo$centers), pch = 24, cex =1, lwd = 1)
+```
+
+Avaliar
+
+* betweenss
+* totss
+* betweenss/totss
+
+
+## Alternativa k-Medóides
+
+
+```{r}
+library(cluster)
+x <- rbind(matrix(rnorm(100, mean = 0.5, sd = 4.5), ncol = 2),
+matrix(rnorm(100, mean = 0.5, sd = 0.1), ncol = 2))
+colnames(x) <- c("x", "y")
+modelo1 <- pam(x, 2)
+modelo2 <- kmeans(x, 2)
+par(mfrow=c(1,2))
+plot(x, col = modelo1$clustering, main="Clusters k-Medoids")
+points(modelo1$medoids, col = 1:3, pch = 10, cex = 4)
+plot(x, col = modelo2$cluster, main="Clusters k-Means")
+points(modelo2$centers, col = 1:3, pch = 10, cex = 4)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

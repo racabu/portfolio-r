@@ -10,8 +10,8 @@ output: html_notebook
 Se não existir diretório data, cria através do comando:
 
 ```{r}
-if(!file.exists('data')){
-  dir.create('data')
+if(!file.exists('../data')){
+  dir.create('../data')
   }
 ```
 
@@ -20,18 +20,18 @@ mode='wb'
 
 ```{r}
 file.url = 'http://www.bcb.gov.br/pec/Indeco/Port/IE1-04.xlsx'
-file.local = file.path('./data', basename(file.url))
+file.local = file.path('../data', basename(file.url))
 download.file(url = file.url, destfile = file.local , mode='wb')
 ```
 
 ```{r}
 dl_url <- function(file.url){
-  if(!file.exists('data')){
-    dir.create('data')
+  if(!file.exists('../data')){
+    dir.create('../data')
     }
-  file.local = file.path('./data', basename(file.url))
+  file.local = file.path('../data', basename(file.url))
   download.file(url = file.url, destfile = file.local , mode='wb')
-  list.files('./data')
+  list.files('../data')
   }
 ```
 
@@ -45,9 +45,9 @@ dl_url('https://raw.githubusercontent.com/elthonf/fiap-mba-r/master/data/Copas-J
 ## Lendo arquivos locais CSV
 
 ```{r}
-copas <- read.table('./data/Copas.csv', sep=',' , header = TRUE)
-copas.partidas <- read.table('./data/Copas-Partidas.csv', sep=',' , header = TRUE, fill = TRUE)
-copas.jogadores <- read.table('./data/Copas-Jogadores.csv', sep=',' , header = TRUE, fill = TRUE)
+copas <- read.table('../data/Copas.csv', sep=',' , header = TRUE)
+copas.partidas <- read.table('../data/Copas-Partidas.csv', sep=',' , header = TRUE, fill = TRUE)
+copas.jogadores <- read.table('../data/Copas-Jogadores.csv', sep=',' , header = TRUE, fill = TRUE)
 ```
 
 Para que os aquivos CSV com erro no final, usar esse comando
@@ -55,9 +55,9 @@ Para que os aquivos CSV com erro no final, usar esse comando
 read.csv ou read.csv2
 
 ```{r}
-read.csv('./data/Copas.csv')
-read.csv('./data/Copas-Jogadores.csv')
-read.csv('./data/Copas-Partidas.csv')
+read.csv('../data/Copas.csv')
+read.csv('../data/Copas-Jogadores.csv')
+read.csv('../data/Copas-Partidas.csv')
 ```
 
 ## Lendo arquivos locais Excel - XLS
@@ -76,7 +76,7 @@ dl_url('https://raw.githubusercontent.com/elthonf/fiap-mba-r/master/data/cameras
 ```
 
 ```{r}
-camera.data.x = read_excel(path = './data/cameras.baltimore.xlsx', sheet = 1)
+camera.data.x = read_excel(path = '../data/cameras.baltimore.xlsx', sheet = 1)
 ```
 
 Em Baltimore

@@ -14,6 +14,10 @@ googleAnalyticsR
 Pacote:
 dplyr
 
+```{r}
+library(dplyr)
+```
+
 ## DPLYR - Mutate
 
 tabela <- mutate(tabela,
@@ -30,7 +34,7 @@ s2 <- mutate(starwars,imc = mass / ((height / 100) ^ 2) )
 ```
 
 
-## Exercício
+## Exemplo
 
 Carregar o dataset BrFlights2 (aula 02)
 
@@ -42,7 +46,7 @@ Criar as colunas vistas na aula 2, mas agora com um único comando usando o muta
 - TempoViagem.Real
 
 ```{r}
-load('./data/BrFlights2.RData')
+load('../data/BrFlights2.RData')
 
 BrFlights2 <- mutate(BrFlights2
  , Partida.Atraso = BrFlights2$Partida.Real - BrFlights2$Partida.Prevista
@@ -55,7 +59,7 @@ BrFlights2 <- mutate(BrFlights2
 ```
 
 
-## Exercício
+## Exemplo
 
 testar com   current_vars()
 
@@ -98,6 +102,10 @@ print(as.list(match.call()))
 
 %>%
 
+```{r}
+library(magrittr)
+```
+
 função1() %>% 
 função2(___,___,.,___,___) - neste caso vai pro param 3
 função2(___,___,___,___) - neste caso vai pro param 1 (j? posso começar com o param 2)
@@ -109,10 +117,10 @@ função2(___,___,___,___) - neste caso vai pro param 1 (j? posso começar com o
 * Há um atraso médio de chegadas. Qual é este valor?
 * Crie uma coluna de atraso relativo com a diferença do atraso real para o atraso médio.
 
-<b>Coloca o Atraso relativo</b>
+Coloca o Atraso relativo
 
 ```{r}
-load('./data/BrFlights2.RData')
+load('../data/BrFlights2.RData')
 
 BrFlights2 <- BrFlights2 %>%
 mutate(Partida.Atraso = BrFlights2$Partida.Real - BrFlights2$Partida.Prevista) %>%
@@ -121,7 +129,6 @@ mutate(DistanciaEuc = sqrt(
     ( BrFlights2$LatDest  - BrFlights2$LatOrig ) ** 2
   + ( BrFlights2$LongDest - BrFlights2$LongOrig) ** 2 )) %>% 
 mutate(.,TempoViagem.Real = BrFlights2$Chegada.Real - BrFlights2$Partida.Real)
-
 ```
 
 ## DPLYR - Filter (Filtra linhas)
@@ -131,6 +138,7 @@ mutate(.,TempoViagem.Real = BrFlights2$Chegada.Real - BrFlights2$Partida.Real)
 starwars %>%
 filter(species == "Droid")
 ```
+
 
 ```{r}
 starwars %>%
@@ -150,6 +158,7 @@ E se tiver uma variável com o nome PONTO ou com o nome do PIPE
 ```{r}
 BrFlights2 %>% 
   filter(Companhia.Aerea == "AZUL") -> Azul
+head(Azul)
 ```
 
 
@@ -161,7 +170,7 @@ starwars %>%
   select(name, ends_with("color"))
 ```
 
-## Exercício
+## Exemplo
 
 Remonte o dataset BrFlights2 para que:
 - Partida.Atraso real fique após partida Partida.Real
@@ -185,8 +194,7 @@ BrFlights3 <- BrFlights2 %>%
           Situacao.Voo, Codigo.Justificativa,
           Aeroporto.Origem, Cidade.Origem, Estado.Origem, Pais.Origem,
           Aeroporto.Destino, Cidade.Destino, Estado.Destino, Pais.Destino,
-          LongDest, LatDest, LongOrig, LatOrig, DistanciaEuc,
-          Atraso.Relativo, j = 2)
+          LongDest, LatDest, LongOrig, LatOrig, DistanciaEuc, j = 2)
 ```
 
 ## Renomeia a coluna
@@ -238,8 +246,8 @@ rm(atraso)
 ## JOIN
 
 ```{r}
-publishers <- read.csv('./data/publishers.csv')
-superheroes <- read.csv('./data/superheroes.csv')
+publishers <- read.csv('../data/publishers.csv')
+superheroes <- read.csv('../data/superheroes.csv')
 ```
 
 
@@ -286,7 +294,10 @@ BrFlights2 %>%
   group_by(  ) %>% 
   summarise(
     j = n(),
-    mass = mean(mass, na.rm = TRUE)
+    mass = mean(BrFlights2$mass, na.rm = TRUE)
   ) %>% 
   filter(j > 1)
 ```
+
+
+

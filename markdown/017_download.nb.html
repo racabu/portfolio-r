@@ -181,9 +181,9 @@ $(document).ready(function () {
 <p>Se não existir diretório data, cria através do comando:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIWZpbGUuZXhpc3RzKCdkYXRhJykpe1xuICBkaXIuY3JlYXRlKCdkYXRhJylcbiAgfVxuYGBgIn0= -->
-<pre class="r"><code>if(!file.exists('data')){
-  dir.create('data')
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaWYoIWZpbGUuZXhpc3RzKCcuLi9kYXRhJykpe1xuICBkaXIuY3JlYXRlKCcuLi9kYXRhJylcbiAgfVxuYGBgIn0= -->
+<pre class="r"><code>if(!file.exists('../data')){
+  dir.create('../data')
   }</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -191,9 +191,9 @@ $(document).ready(function () {
 <p>download.file() mode=‘wb’</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZS51cmwgPSAnaHR0cDovL3d3dy5iY2IuZ292LmJyL3BlYy9JbmRlY28vUG9ydC9JRTEtMDQueGxzeCdcbmZpbGUubG9jYWwgPSBmaWxlLnBhdGgoJy4vZGF0YScsIGJhc2VuYW1lKGZpbGUudXJsKSlcbmRvd25sb2FkLmZpbGUodXJsID0gZmlsZS51cmwsIGRlc3RmaWxlID0gZmlsZS5sb2NhbCAsIG1vZGU9J3diJylcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmlsZS51cmwgPSAnaHR0cDovL3d3dy5iY2IuZ292LmJyL3BlYy9JbmRlY28vUG9ydC9JRTEtMDQueGxzeCdcbmZpbGUubG9jYWwgPSBmaWxlLnBhdGgoJy4uL2RhdGEnLCBiYXNlbmFtZShmaWxlLnVybCkpXG5kb3dubG9hZC5maWxlKHVybCA9IGZpbGUudXJsLCBkZXN0ZmlsZSA9IGZpbGUubG9jYWwgLCBtb2RlPSd3YicpXG5gYGAifQ== -->
 <pre class="r"><code>file.url = 'http://www.bcb.gov.br/pec/Indeco/Port/IE1-04.xlsx'
-file.local = file.path('./data', basename(file.url))
+file.local = file.path('../data', basename(file.url))
 download.file(url = file.url, destfile = file.local , mode='wb')</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cDovL3d3dy5iY2IuZ292LmJyL3BlYy9JbmRlY28vUG9ydC9JRTEtMDQueGxzeCdcbkNvbnRlbnQgdHlwZSAnYXBwbGljYXRpb24vdm5kLm9wZW54bWxmb3JtYXRzLW9mZmljZWRvY3VtZW50LnNwcmVhZHNoZWV0bWwuc2hlZXQnIGxlbmd0aCAxNTYwNyBieXRlcyAoMTUgS0IpXG5kb3dubG9hZGVkIDE1IEtCXG4ifQ== -->
@@ -205,14 +205,14 @@ downloaded 15 KB</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGxfdXJsIDwtIGZ1bmN0aW9uKGZpbGUudXJsKXtcbiAgaWYoIWZpbGUuZXhpc3RzKCdkYXRhJykpe1xuICAgIGRpci5jcmVhdGUoJ2RhdGEnKVxuICAgIH1cbiAgZmlsZS5sb2NhbCA9IGZpbGUucGF0aCgnLi9kYXRhJywgYmFzZW5hbWUoZmlsZS51cmwpKVxuICBkb3dubG9hZC5maWxlKHVybCA9IGZpbGUudXJsLCBkZXN0ZmlsZSA9IGZpbGUubG9jYWwgLCBtb2RlPSd3YicpXG4gIGxpc3QuZmlsZXMoJy4vZGF0YScpXG4gIH1cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGxfdXJsIDwtIGZ1bmN0aW9uKGZpbGUudXJsKXtcbiAgaWYoIWZpbGUuZXhpc3RzKCcuLi9kYXRhJykpe1xuICAgIGRpci5jcmVhdGUoJy4uL2RhdGEnKVxuICAgIH1cbiAgZmlsZS5sb2NhbCA9IGZpbGUucGF0aCgnLi4vZGF0YScsIGJhc2VuYW1lKGZpbGUudXJsKSlcbiAgZG93bmxvYWQuZmlsZSh1cmwgPSBmaWxlLnVybCwgZGVzdGZpbGUgPSBmaWxlLmxvY2FsICwgbW9kZT0nd2InKVxuICBsaXN0LmZpbGVzKCcuLi9kYXRhJylcbiAgfVxuYGBgIn0= -->
 <pre class="r"><code>dl_url &lt;- function(file.url){
-  if(!file.exists('data')){
-    dir.create('data')
+  if(!file.exists('../data')){
+    dir.create('../data')
     }
-  file.local = file.path('./data', basename(file.url))
+  file.local = file.path('../data', basename(file.url))
   download.file(url = file.url, destfile = file.local , mode='wb')
-  list.files('./data')
+  list.files('../data')
   }</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
@@ -227,8 +227,12 @@ downloaded 15 KB</code></pre>
 Content type 'text/plain; charset=utf-8' length 1412 bytes
 downloaded 1412 bytes</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ29wYXMtSm9nYWRvcmVzLmNzdlwiIFwiQ29wYXMtUGFydGlkYXMuY3N2XCIgIFwiQ29wYXMuY3N2XCIgICAgICAgICAgIFwiSUUxLTA0Lnhsc3hcIiAgICAgICAgXG4ifQ== -->
-<pre><code>[1] &quot;Copas-Jogadores.csv&quot; &quot;Copas-Partidas.csv&quot;  &quot;Copas.csv&quot;           &quot;IE1-04.xlsx&quot;        </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkJyRmxpZ2h0czIuUkRhdGFcIiAgICAgICAgICAgICAgICAgICBcImNhbWVyYXMuYmFsdGltb3JlLnhsc3hcIiAgICAgICAgICAgIFxuIFszXSBcIkNvcGFzLUpvZ2Fkb3Jlcy5jc3ZcIiAgICAgICAgICAgICAgICBcIkNvcGFzLVBhcnRpZGFzLmNzdlwiICAgICAgICAgICAgICAgIFxuIFs1XSBcIkNvcGFzLmNzdlwiICAgICAgICAgICAgICAgICAgICAgICAgICBcImZpZmEgZ2FtZS0yLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIFs3XSBcImhvdXNlaG9sZF9wb3dlcl9jb25zdW1wdGlvbi50eHQuZ3pcIiBcIklFMS0wNC54bHN4XCIgICAgICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcInB1Ymxpc2hlcnMuY3N2XCIgICAgICAgICAgICAgICAgICAgICBcInN1cGVyaGVyb2VzLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;BrFlights2.RData&quot;                   &quot;cameras.baltimore.xlsx&quot;            
+ [3] &quot;Copas-Jogadores.csv&quot;                &quot;Copas-Partidas.csv&quot;                
+ [5] &quot;Copas.csv&quot;                          &quot;fifa game-2.csv&quot;                   
+ [7] &quot;household_power_consumption.txt.gz&quot; &quot;IE1-04.xlsx&quot;                       
+ [9] &quot;publishers.csv&quot;                     &quot;superheroes.csv&quot;                   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGxfdXJsKCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZWx0aG9uZi9maWFwLW1iYS1yL21hc3Rlci9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicpXG5gYGAifQ== -->
 <pre class="r"><code>dl_url('https://raw.githubusercontent.com/elthonf/fiap-mba-r/master/data/Copas-Partidas.csv')</code></pre>
@@ -238,8 +242,12 @@ downloaded 1412 bytes</code></pre>
 Content type 'text/plain; charset=utf-8' length 239003 bytes (233 KB)
 downloaded 233 KB</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ29wYXMtSm9nYWRvcmVzLmNzdlwiIFwiQ29wYXMtUGFydGlkYXMuY3N2XCIgIFwiQ29wYXMuY3N2XCIgICAgICAgICAgIFwiSUUxLTA0Lnhsc3hcIiAgICAgICAgXG4ifQ== -->
-<pre><code>[1] &quot;Copas-Jogadores.csv&quot; &quot;Copas-Partidas.csv&quot;  &quot;Copas.csv&quot;           &quot;IE1-04.xlsx&quot;        </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkJyRmxpZ2h0czIuUkRhdGFcIiAgICAgICAgICAgICAgICAgICBcImNhbWVyYXMuYmFsdGltb3JlLnhsc3hcIiAgICAgICAgICAgIFxuIFszXSBcIkNvcGFzLUpvZ2Fkb3Jlcy5jc3ZcIiAgICAgICAgICAgICAgICBcIkNvcGFzLVBhcnRpZGFzLmNzdlwiICAgICAgICAgICAgICAgIFxuIFs1XSBcIkNvcGFzLmNzdlwiICAgICAgICAgICAgICAgICAgICAgICAgICBcImZpZmEgZ2FtZS0yLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIFs3XSBcImhvdXNlaG9sZF9wb3dlcl9jb25zdW1wdGlvbi50eHQuZ3pcIiBcIklFMS0wNC54bHN4XCIgICAgICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcInB1Ymxpc2hlcnMuY3N2XCIgICAgICAgICAgICAgICAgICAgICBcInN1cGVyaGVyb2VzLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;BrFlights2.RData&quot;                   &quot;cameras.baltimore.xlsx&quot;            
+ [3] &quot;Copas-Jogadores.csv&quot;                &quot;Copas-Partidas.csv&quot;                
+ [5] &quot;Copas.csv&quot;                          &quot;fifa game-2.csv&quot;                   
+ [7] &quot;household_power_consumption.txt.gz&quot; &quot;IE1-04.xlsx&quot;                       
+ [9] &quot;publishers.csv&quot;                     &quot;superheroes.csv&quot;                   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGxfdXJsKCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZWx0aG9uZi9maWFwLW1iYS1yL21hc3Rlci9kYXRhL0NvcGFzLUpvZ2Fkb3Jlcy5jc3YnKVxuYGBgIn0= -->
 <pre class="r"><code>dl_url('https://raw.githubusercontent.com/elthonf/fiap-mba-r/master/data/Copas-Jogadores.csv')</code></pre>
@@ -249,8 +257,12 @@ downloaded 233 KB</code></pre>
 Content type 'text/plain; charset=utf-8' length 2150588 bytes (2.1 MB)
 downloaded 2.1 MB</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQ29wYXMtSm9nYWRvcmVzLmNzdlwiIFwiQ29wYXMtUGFydGlkYXMuY3N2XCIgIFwiQ29wYXMuY3N2XCIgICAgICAgICAgIFwiSUUxLTA0Lnhsc3hcIiAgICAgICAgXG4ifQ== -->
-<pre><code>[1] &quot;Copas-Jogadores.csv&quot; &quot;Copas-Partidas.csv&quot;  &quot;Copas.csv&quot;           &quot;IE1-04.xlsx&quot;        </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkJyRmxpZ2h0czIuUkRhdGFcIiAgICAgICAgICAgICAgICAgICBcImNhbWVyYXMuYmFsdGltb3JlLnhsc3hcIiAgICAgICAgICAgIFxuIFszXSBcIkNvcGFzLUpvZ2Fkb3Jlcy5jc3ZcIiAgICAgICAgICAgICAgICBcIkNvcGFzLVBhcnRpZGFzLmNzdlwiICAgICAgICAgICAgICAgIFxuIFs1XSBcIkNvcGFzLmNzdlwiICAgICAgICAgICAgICAgICAgICAgICAgICBcImZpZmEgZ2FtZS0yLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIFs3XSBcImhvdXNlaG9sZF9wb3dlcl9jb25zdW1wdGlvbi50eHQuZ3pcIiBcIklFMS0wNC54bHN4XCIgICAgICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcInB1Ymxpc2hlcnMuY3N2XCIgICAgICAgICAgICAgICAgICAgICBcInN1cGVyaGVyb2VzLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;BrFlights2.RData&quot;                   &quot;cameras.baltimore.xlsx&quot;            
+ [3] &quot;Copas-Jogadores.csv&quot;                &quot;Copas-Partidas.csv&quot;                
+ [5] &quot;Copas.csv&quot;                          &quot;fifa game-2.csv&quot;                   
+ [7] &quot;household_power_consumption.txt.gz&quot; &quot;IE1-04.xlsx&quot;                       
+ [9] &quot;publishers.csv&quot;                     &quot;superheroes.csv&quot;                   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -258,10 +270,10 @@ downloaded 2.1 MB</code></pre>
 <h2>Lendo arquivos locais CSV</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29wYXMgPC0gcmVhZC50YWJsZSgnLi9kYXRhL0NvcGFzLmNzdicsIHNlcD0nLCcgLCBoZWFkZXIgPSBUUlVFKVxuY29wYXMucGFydGlkYXMgPC0gcmVhZC50YWJsZSgnLi9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicsIHNlcD0nLCcgLCBoZWFkZXIgPSBUUlVFLCBmaWxsID0gVFJVRSlcbmNvcGFzLmpvZ2Fkb3JlcyA8LSByZWFkLnRhYmxlKCcuL2RhdGEvQ29wYXMtSm9nYWRvcmVzLmNzdicsIHNlcD0nLCcgLCBoZWFkZXIgPSBUUlVFLCBmaWxsID0gVFJVRSlcbmBgYCJ9 -->
-<pre class="r"><code>copas &lt;- read.table('./data/Copas.csv', sep=',' , header = TRUE)
-copas.partidas &lt;- read.table('./data/Copas-Partidas.csv', sep=',' , header = TRUE, fill = TRUE)
-copas.jogadores &lt;- read.table('./data/Copas-Jogadores.csv', sep=',' , header = TRUE, fill = TRUE)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29wYXMgPC0gcmVhZC50YWJsZSgnLi4vZGF0YS9Db3Bhcy5jc3YnLCBzZXA9JywnICwgaGVhZGVyID0gVFJVRSlcbmNvcGFzLnBhcnRpZGFzIDwtIHJlYWQudGFibGUoJy4uL2RhdGEvQ29wYXMtUGFydGlkYXMuY3N2Jywgc2VwPScsJyAsIGhlYWRlciA9IFRSVUUsIGZpbGwgPSBUUlVFKVxuY29wYXMuam9nYWRvcmVzIDwtIHJlYWQudGFibGUoJy4uL2RhdGEvQ29wYXMtSm9nYWRvcmVzLmNzdicsIHNlcD0nLCcgLCBoZWFkZXIgPSBUUlVFLCBmaWxsID0gVFJVRSlcbmBgYCJ9 -->
+<pre class="r"><code>copas &lt;- read.table('../data/Copas.csv', sep=',' , header = TRUE)
+copas.partidas &lt;- read.table('../data/Copas-Partidas.csv', sep=',' , header = TRUE, fill = TRUE)
+copas.jogadores &lt;- read.table('../data/Copas-Jogadores.csv', sep=',' , header = TRUE, fill = TRUE)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -269,10 +281,10 @@ copas.jogadores &lt;- read.table('./data/Copas-Jogadores.csv', sep=',' , header 
 <p>read.csv ou read.csv2</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZC5jc3YoJy4vZGF0YS9Db3Bhcy5jc3YnKVxucmVhZC5jc3YoJy4vZGF0YS9Db3Bhcy1Kb2dhZG9yZXMuY3N2JylcbnJlYWQuY3N2KCcuL2RhdGEvQ29wYXMtUGFydGlkYXMuY3N2JylcbmBgYCJ9 -->
-<pre class="r"><code>read.csv('./data/Copas.csv')
-read.csv('./data/Copas-Jogadores.csv')
-read.csv('./data/Copas-Partidas.csv')</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVhZC5jc3YoJy4uL2RhdGEvQ29wYXMuY3N2JylcbnJlYWQuY3N2KCcuLi9kYXRhL0NvcGFzLUpvZ2Fkb3Jlcy5jc3YnKVxucmVhZC5jc3YoJy4uL2RhdGEvQ29wYXMtUGFydGlkYXMuY3N2JylcbmBgYCJ9 -->
+<pre class="r"><code>read.csv('../data/Copas.csv')
+read.csv('../data/Copas-Jogadores.csv')
+read.csv('../data/Copas-Partidas.csv')</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -292,16 +304,19 @@ dl_url('https://raw.githubusercontent.com/elthonf/fiap-mba-r/master/data/cameras
 Content type 'application/octet-stream' length 15453 bytes (15 KB)
 downloaded 15 KB</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiY2FtZXJhcy5iYWx0aW1vcmUueGxzeFwiIFwiQ29wYXMtSm9nYWRvcmVzLmNzdlwiICAgIFwiQ29wYXMtUGFydGlkYXMuY3N2XCIgICAgIFwiQ29wYXMuY3N2XCIgICAgICAgICAgICAgXG5bNV0gXCJJRTEtMDQueGxzeFwiICAgICAgICAgICBcbiJ9 -->
-<pre><code>[1] &quot;cameras.baltimore.xlsx&quot; &quot;Copas-Jogadores.csv&quot;    &quot;Copas-Partidas.csv&quot;     &quot;Copas.csv&quot;             
-[5] &quot;IE1-04.xlsx&quot;           </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSBcIkJyRmxpZ2h0czIuUkRhdGFcIiAgICAgICAgICAgICAgICAgICBcImNhbWVyYXMuYmFsdGltb3JlLnhsc3hcIiAgICAgICAgICAgIFxuIFszXSBcIkNvcGFzLUpvZ2Fkb3Jlcy5jc3ZcIiAgICAgICAgICAgICAgICBcIkNvcGFzLVBhcnRpZGFzLmNzdlwiICAgICAgICAgICAgICAgIFxuIFs1XSBcIkNvcGFzLmNzdlwiICAgICAgICAgICAgICAgICAgICAgICAgICBcImZpZmEgZ2FtZS0yLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIFs3XSBcImhvdXNlaG9sZF9wb3dlcl9jb25zdW1wdGlvbi50eHQuZ3pcIiBcIklFMS0wNC54bHN4XCIgICAgICAgICAgICAgICAgICAgICAgIFxuIFs5XSBcInB1Ymxpc2hlcnMuY3N2XCIgICAgICAgICAgICAgICAgICAgICBcInN1cGVyaGVyb2VzLmNzdlwiICAgICAgICAgICAgICAgICAgIFxuIn0= -->
+<pre><code> [1] &quot;BrFlights2.RData&quot;                   &quot;cameras.baltimore.xlsx&quot;            
+ [3] &quot;Copas-Jogadores.csv&quot;                &quot;Copas-Partidas.csv&quot;                
+ [5] &quot;Copas.csv&quot;                          &quot;fifa game-2.csv&quot;                   
+ [7] &quot;household_power_consumption.txt.gz&quot; &quot;IE1-04.xlsx&quot;                       
+ [9] &quot;publishers.csv&quot;                     &quot;superheroes.csv&quot;                   </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2FtZXJhLmRhdGEueCA9IHJlYWRfZXhjZWwocGF0aCA9ICcuL2RhdGEvY2FtZXJhcy5iYWx0aW1vcmUueGxzeCcsIHNoZWV0ID0gMSlcbmBgYCJ9 -->
-<pre class="r"><code>camera.data.x = read_excel(path = './data/cameras.baltimore.xlsx', sheet = 1)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2FtZXJhLmRhdGEueCA9IHJlYWRfZXhjZWwocGF0aCA9ICcuLi9kYXRhL2NhbWVyYXMuYmFsdGltb3JlLnhsc3gnLCBzaGVldCA9IDEpXG5gYGAifQ== -->
+<pre class="r"><code>camera.data.x = read_excel(path = '../data/cameras.baltimore.xlsx', sheet = 1)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -329,7 +344,7 @@ downloaded 15 KB</code></pre>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRvd25sb2FkIg0KYXV0aG9yOiAiUmFmYWVsIEJ1ZW5vIC0gcm0zMzA1OTMiDQpkYXRlOiAiMjYgZGUgbWFpbyBkZSAyMDE4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyBEb3dubG9hZA0KDQpTZSBuw6NvIGV4aXN0aXIgZGlyZXTDs3JpbyBkYXRhLCBjcmlhIGF0cmF2w6lzIGRvIGNvbWFuZG86DQoNCmBgYHtyfQ0KaWYoIWZpbGUuZXhpc3RzKCdkYXRhJykpew0KICBkaXIuY3JlYXRlKCdkYXRhJykNCiAgfQ0KYGBgDQoNCmRvd25sb2FkLmZpbGUoKQ0KbW9kZT0nd2InDQoNCmBgYHtyfQ0KZmlsZS51cmwgPSAnaHR0cDovL3d3dy5iY2IuZ292LmJyL3BlYy9JbmRlY28vUG9ydC9JRTEtMDQueGxzeCcNCmZpbGUubG9jYWwgPSBmaWxlLnBhdGgoJy4vZGF0YScsIGJhc2VuYW1lKGZpbGUudXJsKSkNCmRvd25sb2FkLmZpbGUodXJsID0gZmlsZS51cmwsIGRlc3RmaWxlID0gZmlsZS5sb2NhbCAsIG1vZGU9J3diJykNCmBgYA0KDQpgYGB7cn0NCmRsX3VybCA8LSBmdW5jdGlvbihmaWxlLnVybCl7DQogIGlmKCFmaWxlLmV4aXN0cygnZGF0YScpKXsNCiAgICBkaXIuY3JlYXRlKCdkYXRhJykNCiAgICB9DQogIGZpbGUubG9jYWwgPSBmaWxlLnBhdGgoJy4vZGF0YScsIGJhc2VuYW1lKGZpbGUudXJsKSkNCiAgZG93bmxvYWQuZmlsZSh1cmwgPSBmaWxlLnVybCwgZGVzdGZpbGUgPSBmaWxlLmxvY2FsICwgbW9kZT0nd2InKQ0KICBsaXN0LmZpbGVzKCcuL2RhdGEnKQ0KICB9DQpgYGANCg0KDQpgYGB7cn0NCmRsX3VybCgnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2VsdGhvbmYvZmlhcC1tYmEtci9tYXN0ZXIvZGF0YS9Db3Bhcy5jc3YnKQ0KZGxfdXJsKCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZWx0aG9uZi9maWFwLW1iYS1yL21hc3Rlci9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicpDQpkbF91cmwoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHRob25mL2ZpYXAtbWJhLXIvbWFzdGVyL2RhdGEvQ29wYXMtSm9nYWRvcmVzLmNzdicpDQpgYGANCg0KIyMgTGVuZG8gYXJxdWl2b3MgbG9jYWlzIENTVg0KDQpgYGB7cn0NCmNvcGFzIDwtIHJlYWQudGFibGUoJy4vZGF0YS9Db3Bhcy5jc3YnLCBzZXA9JywnICwgaGVhZGVyID0gVFJVRSkNCmNvcGFzLnBhcnRpZGFzIDwtIHJlYWQudGFibGUoJy4vZGF0YS9Db3Bhcy1QYXJ0aWRhcy5jc3YnLCBzZXA9JywnICwgaGVhZGVyID0gVFJVRSwgZmlsbCA9IFRSVUUpDQpjb3Bhcy5qb2dhZG9yZXMgPC0gcmVhZC50YWJsZSgnLi9kYXRhL0NvcGFzLUpvZ2Fkb3Jlcy5jc3YnLCBzZXA9JywnICwgaGVhZGVyID0gVFJVRSwgZmlsbCA9IFRSVUUpDQpgYGANCg0KUGFyYSBxdWUgb3MgYXF1aXZvcyBDU1YgY29tIGVycm8gbm8gZmluYWwsIHVzYXIgZXNzZSBjb21hbmRvDQoNCnJlYWQuY3N2IG91IHJlYWQuY3N2Mg0KDQpgYGB7cn0NCnJlYWQuY3N2KCcuL2RhdGEvQ29wYXMuY3N2JykNCnJlYWQuY3N2KCcuL2RhdGEvQ29wYXMtSm9nYWRvcmVzLmNzdicpDQpyZWFkLmNzdignLi9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicpDQpgYGANCg0KIyMgTGVuZG8gYXJxdWl2b3MgbG9jYWlzIEV4Y2VsIC0gWExTDQoNClBhY290ZXMNCnhsc3gNCnJlYWR4bA0Kb3Blbnhsc3gNCnJlYWRyIChvdXRyb3MgdGlwb3MgZGUgYXJxdWl2b3MgLSBtYWlzIHNpbXBsZXMpDQoNCnJlYWQueGxzeCAvIHJlYWQueGxzeDIgLyByZWFkX2V4Y2VsDQoNCmBgYHtyfQ0KbGlicmFyeShyZWFkeGwpDQpkbF91cmwoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHRob25mL2ZpYXAtbWJhLXIvbWFzdGVyL2RhdGEvY2FtZXJhcy5iYWx0aW1vcmUueGxzeCcpDQpgYGANCg0KYGBge3J9DQpjYW1lcmEuZGF0YS54ID0gcmVhZF9leGNlbChwYXRoID0gJy4vZGF0YS9jYW1lcmFzLmJhbHRpbW9yZS54bHN4Jywgc2hlZXQgPSAxKQ0KYGBgDQoNCkVtIEJhbHRpbW9yZQ0KLSBRdWFsIGEgY8OibWVyYSBtYWlzIGFvIE5vcnRlPw0KLSBRdWFsIGEgY8OibWVyYSBtYWlzIGFvIFN1bD8NCi0gUXVhbCBhIGPDom1lcmEgbWFpcyBhbyBMZXN0ZT8NCi0gUXVhbCBhIGPDom1lcmEgbWFpcyBhbyBPZXN0ZT8NCg0KYGBge3J9DQoNCmBgYA0KDQoNCiMjIyBEYWRvcyBkZSBiYW5jbyBkZSBkYWRvcw0KDQpFeGVtcGxvIGRlIGNvbmV4w6NvIGEgdW0gQmFuY28gZGUgRGFkb3MNCg0KYGBge3J9DQpkYkNvbm4gPC0gZGJDb25uZWN0KE15U1FMKCksIHVzZXI9J2VsdGhvbicscGFzc3dvcmQ9J3h4eHh4eHgnLCBob3N0PSdsb2NhbGhvc3QnKQ0KcmVzdWx0YWRvIDwtIGRiR2V0UXVlcnkoZGJDb25uLCAnU0VMRUNUICogRlJPTWNsaWVudGVzJykNCmRiRGlzY29ubmVjdChkYkNvbm4pDQpgYGANCg0KDQoNCg0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkRvd25sb2FkIg0KYXV0aG9yOiAiUmFmYWVsIEJ1ZW5vIC0gcm0zMzA1OTMiDQpkYXRlOiAiMjYgZGUgbWFpbyBkZSAyMDE4Ig0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCg0KIyBEb3dubG9hZA0KDQpTZSBuw6NvIGV4aXN0aXIgZGlyZXTDs3JpbyBkYXRhLCBjcmlhIGF0cmF2w6lzIGRvIGNvbWFuZG86DQoNCmBgYHtyfQ0KaWYoIWZpbGUuZXhpc3RzKCcuLi9kYXRhJykpew0KICBkaXIuY3JlYXRlKCcuLi9kYXRhJykNCiAgfQ0KYGBgDQoNCmRvd25sb2FkLmZpbGUoKQ0KbW9kZT0nd2InDQoNCmBgYHtyfQ0KZmlsZS51cmwgPSAnaHR0cDovL3d3dy5iY2IuZ292LmJyL3BlYy9JbmRlY28vUG9ydC9JRTEtMDQueGxzeCcNCmZpbGUubG9jYWwgPSBmaWxlLnBhdGgoJy4uL2RhdGEnLCBiYXNlbmFtZShmaWxlLnVybCkpDQpkb3dubG9hZC5maWxlKHVybCA9IGZpbGUudXJsLCBkZXN0ZmlsZSA9IGZpbGUubG9jYWwgLCBtb2RlPSd3YicpDQpgYGANCg0KYGBge3J9DQpkbF91cmwgPC0gZnVuY3Rpb24oZmlsZS51cmwpew0KICBpZighZmlsZS5leGlzdHMoJy4uL2RhdGEnKSl7DQogICAgZGlyLmNyZWF0ZSgnLi4vZGF0YScpDQogICAgfQ0KICBmaWxlLmxvY2FsID0gZmlsZS5wYXRoKCcuLi9kYXRhJywgYmFzZW5hbWUoZmlsZS51cmwpKQ0KICBkb3dubG9hZC5maWxlKHVybCA9IGZpbGUudXJsLCBkZXN0ZmlsZSA9IGZpbGUubG9jYWwgLCBtb2RlPSd3YicpDQogIGxpc3QuZmlsZXMoJy4uL2RhdGEnKQ0KICB9DQpgYGANCg0KDQpgYGB7cn0NCmRsX3VybCgnaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2VsdGhvbmYvZmlhcC1tYmEtci9tYXN0ZXIvZGF0YS9Db3Bhcy5jc3YnKQ0KZGxfdXJsKCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZWx0aG9uZi9maWFwLW1iYS1yL21hc3Rlci9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicpDQpkbF91cmwoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHRob25mL2ZpYXAtbWJhLXIvbWFzdGVyL2RhdGEvQ29wYXMtSm9nYWRvcmVzLmNzdicpDQpgYGANCg0KIyMgTGVuZG8gYXJxdWl2b3MgbG9jYWlzIENTVg0KDQpgYGB7cn0NCmNvcGFzIDwtIHJlYWQudGFibGUoJy4uL2RhdGEvQ29wYXMuY3N2Jywgc2VwPScsJyAsIGhlYWRlciA9IFRSVUUpDQpjb3Bhcy5wYXJ0aWRhcyA8LSByZWFkLnRhYmxlKCcuLi9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicsIHNlcD0nLCcgLCBoZWFkZXIgPSBUUlVFLCBmaWxsID0gVFJVRSkNCmNvcGFzLmpvZ2Fkb3JlcyA8LSByZWFkLnRhYmxlKCcuLi9kYXRhL0NvcGFzLUpvZ2Fkb3Jlcy5jc3YnLCBzZXA9JywnICwgaGVhZGVyID0gVFJVRSwgZmlsbCA9IFRSVUUpDQpgYGANCg0KUGFyYSBxdWUgb3MgYXF1aXZvcyBDU1YgY29tIGVycm8gbm8gZmluYWwsIHVzYXIgZXNzZSBjb21hbmRvDQoNCnJlYWQuY3N2IG91IHJlYWQuY3N2Mg0KDQpgYGB7cn0NCnJlYWQuY3N2KCcuLi9kYXRhL0NvcGFzLmNzdicpDQpyZWFkLmNzdignLi4vZGF0YS9Db3Bhcy1Kb2dhZG9yZXMuY3N2JykNCnJlYWQuY3N2KCcuLi9kYXRhL0NvcGFzLVBhcnRpZGFzLmNzdicpDQpgYGANCg0KIyMgTGVuZG8gYXJxdWl2b3MgbG9jYWlzIEV4Y2VsIC0gWExTDQoNClBhY290ZXMNCnhsc3gNCnJlYWR4bA0Kb3Blbnhsc3gNCnJlYWRyIChvdXRyb3MgdGlwb3MgZGUgYXJxdWl2b3MgLSBtYWlzIHNpbXBsZXMpDQoNCnJlYWQueGxzeCAvIHJlYWQueGxzeDIgLyByZWFkX2V4Y2VsDQoNCmBgYHtyfQ0KbGlicmFyeShyZWFkeGwpDQpkbF91cmwoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9lbHRob25mL2ZpYXAtbWJhLXIvbWFzdGVyL2RhdGEvY2FtZXJhcy5iYWx0aW1vcmUueGxzeCcpDQpgYGANCg0KYGBge3J9DQpjYW1lcmEuZGF0YS54ID0gcmVhZF9leGNlbChwYXRoID0gJy4uL2RhdGEvY2FtZXJhcy5iYWx0aW1vcmUueGxzeCcsIHNoZWV0ID0gMSkNCmBgYA0KDQpFbSBCYWx0aW1vcmUNCi0gUXVhbCBhIGPDom1lcmEgbWFpcyBhbyBOb3J0ZT8NCi0gUXVhbCBhIGPDom1lcmEgbWFpcyBhbyBTdWw/DQotIFF1YWwgYSBjw6JtZXJhIG1haXMgYW8gTGVzdGU/DQotIFF1YWwgYSBjw6JtZXJhIG1haXMgYW8gT2VzdGU/DQoNCmBgYHtyfQ0KDQpgYGANCg0KDQojIyMgRGFkb3MgZGUgYmFuY28gZGUgZGFkb3MNCg0KRXhlbXBsbyBkZSBjb25leMOjbyBhIHVtIEJhbmNvIGRlIERhZG9zDQoNCmBgYHtyfQ0KZGJDb25uIDwtIGRiQ29ubmVjdChNeVNRTCgpLCB1c2VyPSdlbHRob24nLHBhc3N3b3JkPSd4eHh4eHh4JywgaG9zdD0nbG9jYWxob3N0JykNCnJlc3VsdGFkbyA8LSBkYkdldFF1ZXJ5KGRiQ29ubiwgJ1NFTEVDVCAqIEZST01jbGllbnRlcycpDQpkYkRpc2Nvbm5lY3QoZGJDb25uKQ0KYGBgDQoNCg0KDQoNCg0KDQo=</div>
 
 
 
