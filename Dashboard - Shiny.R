@@ -5,7 +5,6 @@ library(shinydashboard)
 ui <- dashboardPage(
   dashboardHeader(title = "Portfolio Pessoal - R"),
   dashboardSidebar(sidebarMenu(
-    menuItem("O Aluno"               , tabName = "sobremim"     , icon = icon("user")      ),
     menuItem("R - Códigos Básicos"   , tabName = "basic"        , icon = icon("terminal")  ),
     menuItem("R - Valores Especiais" , tabName = "specialval"   , icon = icon("terminal")  ),
     menuItem("R - Data e Hora"       , tabName = "datahora"     , icon = icon("calendar")  ),
