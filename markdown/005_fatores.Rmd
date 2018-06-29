@@ -1,0 +1,27 @@
+---
+title: "Fatores"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+## Fatores
+
+Servem para categorizar dados
+
+```{r}
+sexo <- c("Masc","Fem","Fem","Masc","Masc")
+fac_sexo <- factor(sexo)
+fac_sexo
+```
+
+Exemplo Ordenando
+
+```{r}
+temperatura <- c("alta", "baixa", "alta","baixa", "media")
+temperaturaf <- factor(temperatura, order = TRUE, levels = c("baixa", "media", "alta"))
+temperaturaf
+min(temperaturaf)
+max(temperaturaf)
+```
+

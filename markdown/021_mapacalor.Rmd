@@ -1,0 +1,250 @@
+---
+title: "Mapa de Calor"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Mapa de Calor
+
+```{r}
+library(dplyr)
+library(readr)
+library(plotly)
+library(zoo)
+library(scales)
+library(dendextend)
+library(ape)
+library(tidyr)
+```
+
+
+```{r}
+set.seed(12345)
+dados <- matrix(rnorm(400),
+nrow = 40)
+image(x = 1:10, y = 1:40, z = t(dados)[,40:1])
+```
+
+
+```{r}
+cores <- c("red", "orange", "yellow", "green", "blue")
+image(x = 1:10, y = 1:40, z = t(dados)[,40:1], col = cores)
+```
+
+Teste com valores ordenados
+
+```{r}
+dados.ord =  matrix(sort(dados), nrow = 1)
+image(x = 1:400, y = 1:1, z = t(dados.ord) )
+```
+
+
+```{r}
+dados.ord =  matrix(sort(dados), nrow = 40)
+image(x = 1:10, y = 1:40, z = t(dados.ord)[,40:1])
+```
+
+
+```{r}
+cores <- c("red", "orange", "yellow", "green", "blue")
+image(x = 1:10, y = 1:40, z = t(dados.ord)[,40:1], col = cores)
+```
+
+
+```{r}
+colorPallete1 = c("red", "yellow", "green")
+plot(x=seq_along(colorPallete1), col=colorPallete1, pch=19, cex=10)
+gradiente1 = colorRampPalette(colorPallete1)(n = 30)
+plot(x=seq_along(gradiente1), col=gradiente1, pch=19, cex=10)
+```
+
+
+
+```{r}
+colorPallete2 = c("#f8696b", "#ffeb84", "#63be7b")
+plot(x=seq_along(colorPallete2), col=colorPallete2, pch=19, cex=10)
+gradiente2 = colorRampPalette(colorPallete2)(n = 30)
+plot(x=seq_along(gradiente2), col=gradiente2, pch=19, cex=10)
+```
+
+
+```{r}
+cores <- c("red", "orange", "yellow", "green", "blue")
+plot(x=seq_along(cores), col=cores, pch=19, cex=10)
+gradiente3 = colorRampPalette(cores)(n = 30)
+plot(x=seq_along(gradiente3), col=gradiente3, pch=19, cex=10)
+```
+
+```{r}
+fifa_game_2 %>%
+filter(league=="Spanish Primera Divisi?n") %>%
+select(name, age, height_cm, dribbling) -> spain.colors
+with(spain.colors,
+plot( x = height_cm, y = age )
+)
+```
+
+Existe um pacote scales que possui uma função show_col específica para visualizar escalas de cores:
+
+```{r}
+library(scales)
+show_col(gradiente2, labels = F)
+```
+
+Cores para análise do dataset da Fifa:
+
+```{r}
+cores.fifa  = c("white", "#63be7b", "#ffeb84",  "#f8696b")
+show_col(cores.fifa)
+```
+
+
+```{r}
+gradiente.fifa = colorRampPalette(cores.fifa)(n = 30)
+show_col(gradiente.fifa, labels = FALSE)
+```
+
+
+Passos seguintes:
+
+Criar agrupamento com os dados (média)
+Definir a escala de cores
+Branco, verde, amarelo e vermelho
+Gerar dataset com
+x e y contínuo
+mapa
+Plotar
+Image
+ou Plotly
+
+
+```{r}
+
+```
+
+
+Obtem um novo dataset da Primeira Liga Espanhola
+
+```{r}
+fifa_game_2 %>%
+  #head(200) %>% 
+  filter(league=="Spanish Primera División") %>% 
+  select(name, age, height_cm, dribbling) -> spain.colors
+# PLota os elementos selecionados
+with(spain.colors,
+     plot( x = height_cm, y =  age  )
+)
+```
+
+
+Gera crossing table de idade e altura (tabela auxiliar)
+
+
+```{r}
+alturas = min(spain.colors$height_cm):max(spain.colors$height_cm)
+idades = min(spain.colors$age):max(spain.colors$age)
+crossing(height_cm = alturas,
+         age = idades
+         ) -> spain.colors.crossing
+```
+
+
+Agrupa a característica dribling pelas duas dimensões que serão analisadas
+
+
+```{r}
+spain.colors %>%
+  group_by(height_cm, age) %>% 
+  summarise(
+    dribbling.avg = mean(dribbling)
+  ) %>% 
+  right_join(spain.colors.crossing, by=c('height_cm' = 'height_cm', 'age'='age')) %>% 
+  na.fill(fill=0) %>%
+  data.frame() -> spain.colors.group 
+```
+
+
+Plotagem do mapa de calor (white, green, yellow, red)
+
+
+```{r}
+with(spain.colors.group,
+  image(x = alturas,
+       xlab = "Altura cm",
+       y = idades,
+       ylab = "Idade",
+       main = "Dribbling médio",
+       z = t(matrix(dribbling.avg, nrow = length(idades)) ),
+       col = gradiente.fifa
+       )
+)
+```
+
+
+Mesmo plot, com contornos dos grupos
+
+
+```{r}
+with(spain.colors.group,
+  image(x = alturas,
+       xlab = "Altura cm",
+       y = idades,
+       ylab = "Idade",
+       main = "Dribbling médio",
+       z = t(matrix(dribbling.avg, nrow = length(idades)) ),
+       col = gradiente.fifa
+       )
+)
+with(spain.colors.group,
+  contour(alturas,
+          idades,
+          t(matrix( dribbling.avg, nrow = length(idades)) ),
+          add = TRUE, drawlabels = FALSE,
+          levels = seq(50, 100, by = 20)
+      )
+)
+```
+
+
+Mapa de calor com o plotly
+
+
+```{r}
+with(spain.colors.group,
+     plot_ly(x = alturas,
+             y = idades,
+              z = t(matrix( dribbling.avg, nrow = length(idades)) ),
+             colors = gradiente.fifa, #"Greys",
+             type = "heatmap")
+)
+```
+
+
+Mapa de calor e contornos com o plotly
+
+
+```{r}
+with(spain.colors.group,
+     plot_ly(x = alturas,
+             y = idades,
+             z = t(matrix( dribbling.avg, nrow = length(idades)) ),
+             colors = gradiente.fifa,
+             type = "contour",
+             contours = list(
+               start = 00,
+               end = 80,
+               size = 20
+             ))
+)
+```
+
+
+
+
+
+
+
+
+
+

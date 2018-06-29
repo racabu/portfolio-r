@@ -1,0 +1,303 @@
+---
+title: "DPLYR - Manipulação de Dados"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# DPLYR - Manipulação de Dados
+
+Pacotes Google:
+googleAuthR
+googleAnalyticsR
+
+Pacote:
+dplyr
+
+```{r}
+library(dplyr)
+```
+
+## DPLYR - Mutate
+
+tabela <- mutate(tabela,
+col1 = `formula`,
+col2 = `formula` )
+
+```{r}
+head(starwars)
+dplyr::starwars
+```
+
+```{r}
+s2 <- mutate(starwars,imc = mass / ((height / 100) ^ 2) )
+```
+
+
+## Exemplo
+
+Carregar o dataset BrFlights2 (aula 02)
+
+Criar as colunas vistas na aula 2, mas agora com um único comando usando o mutate.
+
+- Partida.Atraso
+- Chegada.Atraso
+- DistanciaEuc (distância euclidiana)
+- TempoViagem.Real
+
+```{r}
+load('../data/BrFlights2.RData')
+
+BrFlights2 <- mutate(BrFlights2
+ , Partida.Atraso = BrFlights2$Partida.Real - BrFlights2$Partida.Prevista
+ , Chegada.Atraso = BrFlights2$Chegada.Real - BrFlights2$Chegada.Prevista 
+ , DistanciaEuc = sqrt(
+    ( BrFlights2$LatDest  - BrFlights2$LatOrig ) ** 2
+  + ( BrFlights2$LongDest - BrFlights2$LongOrig) ** 2 )
+ , TempoViagem.Real = BrFlights2$Chegada.Real - BrFlights2$Partida.Real)
+
+```
+
+
+## Exemplo
+
+testar com   current_vars()
+
+```{r}
+retorna_param1 <- function(...){
+print(as.list(match.call()))
+}
+retorna_param2 <- function(...){
+print(as.list(match.call(expand.dots=FALSE)))
+}
+retorna_param3 <- function(...){
+  ls(envir = environment())
+  list(...)
+}
+retorna_param4 <- function(...){
+  ls(envir = environment())
+  a = list(...)
+  ret = list()
+  for (item in names(a)){
+    ret[item] = a[item]
+  }
+  return(ret)
+}
+```
+
+
+```{r}
+retorna_param1(p1 = 1, p2 = "a", p3 = TRUE)
+retorna_param2(p1 = 1, p2 = "a", p3 = TRUE)
+retorna_param3(p1 = 1, p2 = "a", p3 = TRUE)
+retorna_param4(p1 = 1, p2 = "a", p3 = TRUE)
+```
+
+
+```{r}
+print(as.list(match.call()))
+```
+
+## Pacote magrittr e o pipe
+
+%>%
+
+```{r}
+library(magrittr)
+```
+
+função1() %>% 
+função2(___,___,.,___,___) - neste caso vai pro param 3
+função2(___,___,___,___) - neste caso vai pro param 1 (j? posso começar com o param 2)
+
+* Carregar o dataset BrFlights2
+* Fazer o mesmo procedimento já realizado:
+* criar as 4 colunas, porém agora com a utilização do pipe.
+* Para pensar um pouco:
+* Há um atraso médio de chegadas. Qual é este valor?
+* Crie uma coluna de atraso relativo com a diferença do atraso real para o atraso médio.
+
+Coloca o Atraso relativo
+
+```{r}
+load('../data/BrFlights2.RData')
+
+BrFlights2 <- BrFlights2 %>%
+mutate(Partida.Atraso = BrFlights2$Partida.Real - BrFlights2$Partida.Prevista) %>%
+mutate(Chegada.Atraso = BrFlights2$Chegada.Real - BrFlights2$Chegada.Prevista) %>% 
+mutate(DistanciaEuc = sqrt(
+    ( BrFlights2$LatDest  - BrFlights2$LatOrig ) ** 2
+  + ( BrFlights2$LongDest - BrFlights2$LongOrig) ** 2 )) %>% 
+mutate(.,TempoViagem.Real = BrFlights2$Chegada.Real - BrFlights2$Partida.Real)
+```
+
+## DPLYR - Filter (Filtra linhas)
+
+
+```{r}
+starwars %>%
+filter(species == "Droid")
+```
+
+
+```{r}
+starwars %>%
+filter(species == "Droid") %>%
+View()
+```
+
+
+```{r}
+starwars %>%
+filter(species == "Droid") %>%
+head(n = 3)
+```
+
+E se tiver uma variável com o nome PONTO ou com o nome do PIPE
+
+```{r}
+BrFlights2 %>% 
+  filter(Companhia.Aerea == "AZUL") -> Azul
+head(Azul)
+```
+
+
+## DPLYR - SELECT
+
+
+```{r}
+starwars %>%
+  select(name, ends_with("color"))
+```
+
+## Exemplo
+
+Remonte o dataset BrFlights2 para que:
+- Partida.Atraso real fique após partida Partida.Real
+- O mesmo com a chegada
+- TempoViagem.Real fique após Chegada.Atraso
+
+- Atribua esta busca a um novo dataset: BrFlights3
+- Garanta que não tenha perdido nenhuma coluna
+
+```{r}
+names(BrFlights2)
+```
+
+
+```{r}
+BrFlights3 <- BrFlights2 %>% 
+  select( Voos, Companhia.Aerea, Codigo.Tipo.Linha,
+          Partida.Prevista, Partida.Real, Partida.Atraso,
+          Chegada.Prevista, Chegada.Real, Chegada.Atraso,
+          TempoViagem.Real,
+          Situacao.Voo, Codigo.Justificativa,
+          Aeroporto.Origem, Cidade.Origem, Estado.Origem, Pais.Origem,
+          Aeroporto.Destino, Cidade.Destino, Estado.Destino, Pais.Destino,
+          LongDest, LatDest, LongOrig, LatOrig, DistanciaEuc, j = 2)
+```
+
+## Renomeia a coluna
+
+não entendi... ? porque deveria ter mantido as outras colunas.
+Como usar?
+
+```{r}
+BrFlights4 <- BrFlights3 %>%
+select("Partida Real" = Partida.Real)
+```
+
+## ARRANGE
+
+```{r}
+starwars %>%
+arrange(desc(mass))
+```
+
+No dataset BrFlights2:
+
+* Quais os 100 maiores atrasos de chegada de vôos nacionais / regionais?
+( Quantas dias/horas/minutos/segundos foi o maior atraso?
+
+
+```{r}
+BrFlights3 %>% filter(Codigo.Tipo.Linha == 'Nacional' | Codigo.Tipo.Linha == 'Regional') %>% 
+  arrange( desc(Chegada.Atraso) ) %>%
+  head(100) -> BrFlights4
+BrFlights4
+```
+
+
+```{r}
+select(BrFlights4, Chegada.Atraso) %>%
+  head(1) %>%
+  as.numeric() -> atraso
+sprintf('%f segundos', atraso )
+```
+
+
+```{r}
+sprintf('%f minutos', atraso / 60 )
+sprintf('%f horas', atraso / 60 / 60 )
+sprintf('%f dias', atraso / 60 / 60 / 24 )
+rm(atraso)
+```
+
+## JOIN
+
+```{r}
+publishers <- read.csv('../data/publishers.csv')
+superheroes <- read.csv('../data/superheroes.csv')
+```
+
+
+```{r}
+inner_join(publishers,superheroes)
+semi_join(publishers,superheroes)
+anti_join(publishers,superheroes)
+left_join(publishers,superheroes)
+right_join(publishers,superheroes)
+full_join(publishers,superheroes)
+```
+
+## GROUP BY
+
+```{r}
+starwars %>% 
+  group_by(species) %>% 
+  summarise(
+    j = n()
+  )
+```
+
+
+```{r}
+starwars %>% 
+  group_by(species) %>% 
+  summarise(
+    j = n(),
+    mass = mean(mass, na.rm = TRUE)
+  ) %>% 
+  filter(j > 1)
+```
+
+
+## Exercício
+
+Agregações
+
+* qual a CIA com maior atraso médio?
+* Qual estado de origem com maior atraso médio?
+
+```{r}
+BrFlights2 %>% 
+  group_by(  ) %>% 
+  summarise(
+    j = n(),
+    mass = mean(BrFlights2$mass, na.rm = TRUE)
+  ) %>% 
+  filter(j > 1)
+```
+
+
+

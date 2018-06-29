@@ -1,0 +1,65 @@
+---
+title: "Exercicio - Vetores - Bolsa de Valores"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Exercicio
+
+## Vetores - Bolsa de Valores
+
+Imagine que você é um investidor que aplica tanto na Bovespa como na Nasdaq. Na última semana você registrou seus lucros e perdas conforme indicado a seguir:
+
+```{r}
+bovespa <- c(0, 504, -50, 259, -120, 240, 0)
+bovespa
+nasdaq <- c(0, -24, -250, 100, -350, 10, 0)
+nasdaq
+```
+
+Qual foi o resultado diário?
+
+```{r}
+total.semana <- bovespa + nasdaq
+names(total.semana) <- semana.str
+total.semana
+```
+
+E qual foi o resultado total?
+
+```{r}
+total <- sum(total.semana)
+total
+```
+
+Quais dias que mais tive retorno?
+
+```{r}
+sort(total.semana)
+```
+
+Existem mais funções de agregação?
+
+```{r}
+min(total.semana)
+max(total.semana)
+mean(total.semana)
+median(total.semana)
+quantile(total.semana, 0.25)
+quantile(total.semana, 0.75)
+quantile(total.semana, 0.50)
+quantile(total.semana, 0.77)
+```
+
+```{r}
+plot(total.semana, type = 'l', xaxt="n", xlab = "Dias da semana", ylab = "Lucro/Prejuízo", main  = "Lucro por dia"  )
+axis(side=1, at=semana.int, labels = semana.str)
+points(total.semana, col = "red", pch=18)
+```
+
+```{r}
+plot(sort(total.semana), type = 'l', xaxt="n", xlab = "Dias da semana", ylab = "Lucro/Prejuízo", main  = "Lucro por dia ordenado"  )
+axis(side=1, at=semana.int, labels = semana.str[c(5,3,1,7,6,4,2)])
+points(sort(total.semana), col = "red", pch=20)
+```

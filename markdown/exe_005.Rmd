@@ -1,0 +1,40 @@
+---
+title: "Exercicio - Revisão - Aula 01 B"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Revisão - Aula 01 B
+
+M1 6x5 com cada linha contendo o valor de um dos vetores
+
+```{r}
+M1 <- matrix(data = c(a,d,c,d,e,ai), nrow = 6, byrow = T)
+M1
+```
+
+M2 5x6 com cada linha contendo o valor de um dos vetores
+
+```{r}
+M2 <- matrix(data = c(a,b,c,d,e,ai), nrow = 5, byrow = F)
+M2
+```
+
+M3 6x5 com cada elemento contendo 10% de M1 ou seja, 𝑀1 × 0,1
+
+```{r}
+M3 <- M1 * 0.1
+M3
+```
+
+A tabela "attitude" é um data frame 30,7
+Criar matriz M4 5x6 sendo uma tabela com 5 linhas e 6 colunas quaisquer de attitude
+OBS: Converter de data.frame para matrix com o comando as.matrix()
+
+```{r}
+M4 <- as.matrix(attitude[1:5 , 2:7])
+M4
+```
+
+

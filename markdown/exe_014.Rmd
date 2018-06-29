@@ -1,0 +1,41 @@
+---
+title: "Exercicio - Loop - Airpassengers"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Loop - Airpassengers
+
+* Criar script que varre o dataset AirPassengers
+* Observe que este dataset não é matrix, table ou data.frame, mas um TimeSeries
+* Crie um vetor que contenha o valor acumulado de passageiros ao longo do tempo.
+
+opção 1 (exemplo solução professor)
+
+```{r}
+## head(AirPassengers, n = 10L)
+#matrix <- as.matrix(AirPassengers)
+#matrix$new.col <- AirPassengers
+acum <- c(0)
+for (i in AirPassengers) {
+  acum <- c(acum, tail(acum, 1) + i)
+}
+acum <- acum[-1]
+acum
+
+```
+
+opção 2 (Exemplo solução aula)
+
+```{r}
+i = 1
+for (row in AirPassengers) {
+  V[i] = sum(AirPassengers[1:i])
+  i = i + 1
+}
+acum <- acum[-1]
+acum
+
+```
+

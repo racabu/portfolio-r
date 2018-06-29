@@ -1,0 +1,61 @@
+---
+title: "Matrizes"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+## Matrizes
+
+Para criar uma matrix, utilizamos a função "matrix"
+
+```{r}
+matrix(c(1,2,3,4,5,6,7,8,9), nrow = 3)
+```
+
+Cria um vetor com os dados necessários para as matrizes
+
+```{r}
+vet01 = c(1,2,3,4,5,6,7,8,9)
+vet01
+```
+
+Cria uma matriz 3x3
+
+```{r}
+matrix( vet01 , nrow = 3)
+```
+
+Cria uma matriz 3x3, com os dados ordenados por linha
+
+```{r}
+matrix( vet01 , nrow = 3, byrow = T)
+```
+
+Cria uma matriz 6x3, com os dados por linha e "recicla"
+
+```{r}
+matrix( vet01 , nrow = 6, ncol=3, byrow = T)
+```
+
+Um exemplo prático. Vamos criar uma matriz com o lucro nos EUA e fora dos EUA para a trilogia Star Wars. Preste atenção nas variáveis de ambiente para consultar os valores da variável "star_wars".
+
+```{r}
+nova_esperanca<- c(460.998, 314.4)
+imperio_contra_ataca <- c(290.475, 247.900)
+retorno_de_jedi <- c(309.306, 165.8)
+trilogia <- c(nova_esperanca, imperio_contra_ataca, retorno_de_jedi)
+star_wars <- matrix(trilogia, ncol = 2 , byrow = T )
+star_wars
+```
+
+Assim como nomeamos os vetores, também podemos nomear as linhas e colunas de uma matriz.
+
+```{r}
+colnames(star_wars) <- c("EUA", "Mundo-EUA")
+rownames(star_wars) <- c("Uma nova esperança", "O império contra ataca", "O retorno de jedi")
+star_wars
+```
+
+
+

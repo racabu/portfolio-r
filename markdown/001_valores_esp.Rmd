@@ -1,0 +1,51 @@
+---
+title: "Valores Especiais"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Valores Especiais
+
+NA
+* Missing genérico, para representar Not Available
+
+NaN (Not a Number)
+* Resultados de contas que causam erros aritméticos
+* Exemplo 0/0 ou raiz quadrada de -4
+
+Inf e -Inf
+* Números infinitos
+* Exemplo 19/0
+
+NULL
+* Null representa o vazio, o nada!
+* Até NA tem um tipo, mas NULL não!
+* Não é possível colocar NULL em um vetor
+
+```{r}
+v1 = NA
+v2 = NaN
+v3 = NULL
+v4 = Inf
+v5 = -Inf
+vall = c(v1, v2, v3, v4, v5)
+```
+
+
+```{r}
+is.na(vall)
+is.nan(vall)
+is.null(vall)
+is.infinite(vall)
+is.finite(vall)
+is.na(v3)
+is.nan(v3)
+is.null(v3)
+is.infinite(v3)
+is.finite(v3)
+```
+
+
+
+

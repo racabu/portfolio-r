@@ -1,0 +1,91 @@
+---
+title: "Dendrograma"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Dendrograma
+
+Método de clusterização hierárquica ascendente
+
+
+```{r}
+library(dplyr)
+library(readr)
+library(plotly)
+library(zoo)
+library(scales)
+library(dendextend)
+library(ape)
+```
+
+
+Criando um dendrograma simples
+
+```{r}
+set.seed(1909)
+obs_centro = 5
+nclusters = 3
+populacao = nclusters * obs_centro
+x <- rnorm(populacao, mean = rep(1:nclusters, each = obs_centro), sd = 0.2)
+y <- rnorm(populacao, mean = rep(c(1, 2), each = obs_centro), sd = 0.2)
+mydata <- data.frame(x, y)
+plot(x, y, col = "blue", pch = 19, cex = 1)
+text(x + 0.05, y + 0.05, labels = as.character(1:populacao))
+```
+
+
+Cálculo das distâncias
+
+
+```{r}
+dist(mydata[1:7,])
+dist(mydata[1:7,], method = "manhattan")
+```
+
+Cria o modelo de clusterização hierárquica
+
+```{r}
+modelo.hc <- hclust( dist(mydata) )
+```
+
+Plota o dendrograma
+
+```{r}
+plot(modelo.hc,
+     main="Dendrograma simples",
+     xlab="Observações", sub="", ylab = "Distância")
+```
+
+
+Dendrograma com o plotly
+
+```{r}
+modelo.dendro <- as.dendrogram(modelo.hc)
+plot_dendro(modelo.dendro, xmin = -0.05 ) %>% 
+  hide_legend() 
+```
+
+Outra apresentação do dendrograma
+
+```{r}
+plot(dendextend::as.phylo.dendrogram(modelo.hc), type = "fan", 
+     label.offset = 0.05, cex = 1.2)
+```
+
+Dendrograma com mapa de calor
+
+```{r}
+set.seed(12345)
+dados <- matrix(rnorm(400),
+nrow = 40)
+heatmap(dados )
+```
+
+
+
+
+
+
+

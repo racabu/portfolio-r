@@ -1,0 +1,102 @@
+---
+title: "Exercicio - Análise BrFlights2"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Análise BrFlights2 (Falta FINAL - 2 partes)
+
+Carregar o dataset BrFlights2.RData 
+
+* Trata-se de todos os voos comerciais brasileiros de 2016 e 2017
+
+```{r}
+load("../data/BrFlights2.RData") 
+```
+
+Quais colunas podem ser transformadas em Fatores? Transforme-as.
+
+```{r}
+BrFlights2$Voos <- as.factor(BrFlights2$Voos )
+BrFlights2$Companhia.Aerea <- as.factor(BrFlights2$Companhia.Aerea )
+BrFlights2$Codigo.Tipo.Linha <- as.factor(BrFlights2$Codigo.Tipo.Linha )
+BrFlights2$Situacao.Voo <- as.factor(BrFlights2$Situacao.Voo )
+BrFlights2$Aeroporto.Origem <- as.factor(BrFlights2$Aeroporto.Origem )
+BrFlights2$Aeroporto.Destino <- as.factor(BrFlights2$Aeroporto.Destino )
+BrFlights2$Pais.Origem <- as.factor(BrFlights2$Pais.Origem )
+BrFlights2$Pais.Destino <- as.factor(BrFlights2$Pais.Destino )
+BrFlights2$Cidade.Origem <- as.factor(BrFlights2$Cidade.Origem )
+BrFlights2$Cidade.Destino <- as.factor(BrFlights2$Cidade.Destino )
+BrFlights2$Estado.Origem <- as.factor(BrFlights2$Estado.Origem )
+BrFlights2$Estado.Destino <- as.factor(BrFlights2$Estado.Destino )
+```
+
+Crie coluna com o atraso da partida e o atraso da chegada.
+
+```{r}
+BrFlights2$Partida.Atraso <- BrFlights2$Partida.Real - BrFlights2$Partida.Prevista
+BrFlights2$Chegada.Atraso <- BrFlights2$Chegada.Real - BrFlights2$Chegada.Prevista
+```
+
+Crie coluna com distância euclidiana entre origem e destino.
+
+```{r}
+BrFlights2$DistanciaEuc <- 
+  sqrt(
+    ( BrFlights2$LatDest  - BrFlights2$LatOrig ) ** 2
+  + ( BrFlights2$LongDest - BrFlights2$LongOrig) ** 2 )
+```
+
+Crie coluna com tempo de viagem real.
+
+```{r}
+BrFlights2$TempoViagem.Real <- BrFlights2$Chegada.Real - BrFlights2$Partida.Real
+```
+
+Como ver o primeiro quartil, média, mediana, etc. da coluna com o atraso na partida?
+
+```{r}
+summary( as.numeric( BrFlights2$Partida.Atraso) )
+```
+
+Como ver o resumo da tabela toda?
+
+```{r}
+summary(BrFlights2)
+```
+
+Qual companhia aérea com maior atraso médio?
+
+```{r}
+atraso.medio.cia <- aggregate(BrFlights2$Partida.Atraso,
+          by = list( BrFlights2$Companhia.Aerea),
+          FUN = mean,  na.rm = TRUE )
+atraso.medio.cia
+#atraso.medio.cia[order(),] - Como fazer o sorting??
+```
+
+Qual estado de origem com maior atraso médio?
+
+```{r}
+atraso.medio.estado <- aggregate(BrFlights2$Partida.Atraso,
+          by = list( BrFlights2$Estado.Origem),
+          FUN = mean,  na.rm = TRUE )
+atraso.medio.estado
+```
+
+Qual a relação média entre distância percorrida e tempo de voô?
+
+```{r}
+
+BrFlights2$DistanciaEuc
+BrFlights2$TempoViagem.Real
+```
+
+É possível identificar a companhia mais rápida?
+
+```{r}
+
+```
+
+

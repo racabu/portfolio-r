@@ -1,0 +1,34 @@
+---
+title: "Exercicio - Variáveis"
+author: "Rafael Bueno - rm330593"
+date: "26 de maio de 2018"
+output: html_notebook
+---
+
+# Exercicio - Variáveis
+
+## Criar script que
+
+* Crie 10 variáveis em memória
+* Salve as 10 variáveis em arquivo a ser escolhido. 
+
+```{r}
+var01 <- 1
+var02 <- 2
+var03 <- 3
+var04 <- 4
+var05 <- 5
+var06 <- 6
+var07 <- 7
+var08 <- 8
+var09 <- 9
+var10 <- 10
+```
+
+
+```{r eval=FALSE}
+a = choose.files()
+save(var01, var02, var03, var04, var05, var06, var07, var08, var09, var10, file=a)
+```
+
+

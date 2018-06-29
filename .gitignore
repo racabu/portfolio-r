@@ -31,3 +31,6 @@ vignettes/*.pdf
 # Temporary files created by R markdown
 *.utf8.md
 *.knit.md
+
+# como deletar Arquivos Grandes:
+# git filter-branch --prune-empty -d /dev/shm/scratch --index-filter "git rm --cached -f --ignore-unmatch data/household_power_consumption.txt" --tag-name-filter cat -- --all
